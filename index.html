@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Arcana Nexus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+
+    <link rel="stylesheet" href="css/base.css?=v1433140926">
+    <link rel="stylesheet" href="css/shop.css?=v1433140926">
+    <link rel="stylesheet" href="css/news.css?=v1433140926">
+    <link rel="stylesheet" href="css/quests.css?=v1433140926">
+    <link rel="stylesheet" href="css/market.css?=v1433140926">
+    <link rel="stylesheet" href="css/modals.css?=v1433140926">
+    <link rel="stylesheet" href="css/layout.css?=1710140926">
+    <link rel="stylesheet" href="css/profile.css?=v1433140926">
+    <link rel="stylesheet" href="css/cards.css?=v1433140926">
+    <link rel="stylesheet" href="css/packs.css?=v1433140926">
+    <link rel="stylesheet" href="css/minigames.css?=v1433140926">
+    <link rel="stylesheet" href="css/responsive.css?=v1433140926">
+</head>
+<body>
+
+<!-- ШАПКА -->
+<header class="header">
+    <div class="header-logo">
+        <i class="fas fa-gem"></i>
+        <span>Arcana Nexus</span>
+    </div>
+    <div class="header-search">
+        <i class="fas fa-search"></i>
+        <input type="text" id="globalSearch" placeholder="Поиск...">
+    </div>
+    <button class="quest-mini-widget" id="questMiniWidget" onclick="switchSection('quests')" style="display:none;">
+        <i class="fas fa-tasks"></i>
+        <span class="quest-mini-text">0 квест!</span>
+    </button>
+    <button class="hourly-bonus-btn" id="hourlyBonusBtn" title="Ежечасный бонус">
+        <i class="fas fa-gift bonus-icon"></i>
+        <span id="hourlyBonusText" class="hourly-text">Забрать</span>
+    </button>
+    <button class="header-notifications" id="notificationsBtn" title="Уведомления">
+        <i class="fas fa-bell"></i>
+        <span class="notif-badge" id="notifBadge" style="display:none;">0</span>
+    </button>
+    <div class="header-balance">
+        <div class="balance-item xp" title="Опыт">
+            <i class="fas fa-star"></i>
+            <span id="xpDisplayHeader">0/75</span>
+        </div>
+        <div class="balance-item ore" title="Руда">
+            <i class="fas fa-rocket"></i>
+            <span id="oreDisplayHeader">0</span>
+        </div>
+        <div class="balance-item essence" title="Эссенция">
+            <i class="fas fa-gem"></i>
+            <span id="essenceDisplayHeader">0</span>
+        </div>
+    </div>
+    <div class="header-user" onclick="switchSection('profile')" title="Открыть профиль">
+        <div class="user-avatar" id="headerAvatar">🧙</div>
+        <div class="user-name" id="headerUserName">Игрок</div>
+        <i class="fas fa-chevron-down" style="font-size:10px;color:#6b7084;margin-left:2px;"></i>
+    </div>
+</header>
+
+<!-- ГАМБУРГЕР -->
+<button class="hamburger-btn" id="hamburgerBtn">
+    <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- САЙДБАР -->
+<nav class="sidebar" id="sidebar">
+    <div class="nav-section-title">🎮 Геймплей</div>
+    <button class="nav-item active" data-section="mine"><i class="fas fa-hammer"></i><span>Шахта</span></button>
+    <button class="nav-item" data-section="mycards"><i class="fas fa-layer-group"></i><span>Мои карты</span><span class="badge" id="collectionBadge">0</span></button>
+    <button class="nav-item" data-section="catalog"><i class="fas fa-book-open"></i><span>Каталог</span></button>
+    <button class="nav-item" data-section="packs"><i class="fas fa-box"></i><span>Паки</span></button>
+    <button class="nav-item" data-section="sets"><i class="fas fa-object-group"></i><span>Сеты</span></button>
+    
+    <div class="nav-section-title">⚡ Активности</div>
+    <button class="nav-item" data-section="quests">
+        <i class="fas fa-tasks"></i>
+        <span>Квесты</span><span class="badge new">NEW</span>
+        <span class="badge quest" id="questBadge">0</span>
+    </button>
+    <button class="nav-item" data-section="event"><i class="fas fa-calendar-alt"></i><span>Ивент</span><span class="badge event" id="eventBadge">🎃</span></button>
+    <button class="nav-item" data-section="suggest"><i class="fas fa-palette"></i><span>Поток карт</span><span class="badge new">🎨</span></button>
+    
+    <div class="nav-section-title">💬 Социальное</div>
+    <button class="nav-item" data-section="chat"><i class="fas fa-comment-dots"></i><span>Чат</span></button>
+<!--     <button class="nav-item" data-section="trade"><i class="fas fa-exchange-alt"></i><span>Обмен</span><span class="badge" id="tradeBadge">0</span></button> -->
+<!--     <button class="nav-item" data-section="market"><i class="fas fa-store"></i><span>Рынок</span><span class="badge new">NEW</span><span class="badge" id="marketBadge">0</span></button> -->    
+    <button class="nav-item" data-section="shop">
+        <i class="fas fa-gem"></i>
+        <span>Магазин</span>
+        <span class="badge new">💰</span>
+    </button>
+    <button class="nav-item" data-section="top"><i class="fas fa-trophy"></i><span>Топ</span></button>
+    
+    <div class="nav-section-title">🎲 Развлечения</div>
+    <button class="nav-item" data-section="minigames"><i class="fas fa-gamepad"></i><span>Игры</span></button>
+    
+    <div class="nav-section-title">⚙️ Система</div>
+    <button class="nav-item" data-section="news">
+        <i class="fas fa-newspaper"></i>
+        <span>Что нового</span><span class="badge new">NEW</span>
+        <span class="badge new" id="newsBadge" style="display:none;">!</span>
+    </button>
+    <button class="nav-item" data-section="settings"><i class="fas fa-cog"></i><span>Настройки</span></button>
+</nav>
+
+<!-- ОСНОВНОЙ КОНТЕНТ -->
+<main class="main-content">
+
+    <!-- ШАХТА -->
+    <section id="section-mine" class="section active">
+        <div class="section-header">
+            <h1><i class="fas fa-hammer"></i> Шахта</h1>
+        </div>
+        <div class="game-panel">
+            <div class="mine-area">
+                <div class="pickaxe-btn pickaxe-lvl1" id="pickaxeBtn">
+                    <div class="pickaxe-icon">⛏️</div>
+                    <div class="pickaxe-level" id="pickaxeLevelDisplay">Ур.1</div>
+                    <div class="event-multiplier" id="eventMultiplier">×2</div>
+                </div>
+            </div>
+
+            <div class="strikes-counter">
+                <span>💥</span>
+                <span class="strikes-text">УДАРЫ: <span id="strikesDone">0</span>/<span id="strikesLimit">100</span></span>
+                <div class="strikes-bar"><div class="strikes-bar-fill" id="strikesBarFill" style="width:0%;"></div></div>
+            </div>
+
+            <div class="bonus-block" id="bonusBlock">
+                <span class="bonus-title">🎁 БОНУС +5 💠</span>
+                <button class="bonus-btn" id="bonusBtn">ЗАБРАТЬ</button>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn purple" id="upgradePickaxeBtn"><i class="fas fa-wrench"></i> Улучшить кирку</button>
+            </div>
+
+            <div class="automine-panel">
+                <div class="am-icon">⚙️</div>
+                <div class="am-info">
+                    <div class="am-title">
+                        <i class="fas fa-bolt"></i> Авто-шахта
+                        <span id="automineRate" style="font-size:11px;opacity:0.6;">60/ч</span>
+                    </div>
+                    <div class="am-desc">Накоплено за <b id="automineHours">0</b>ч офлайна</div>
+                    <div class="am-accumulated">
+                        <span id="automineAccumulated">0</span>
+                        <small>⛏️ руды</small>
+                    </div>
+                    <div style="height:4px;background:rgba(0,0,0,0.4);border-radius:4px;margin-top:8px;overflow:hidden;">
+                        <div id="automineProgressFill" style="height:100%;width:0%;background:linear-gradient(90deg,#ffcc66,#ffaa33);border-radius:4px;transition:width 0.6s;"></div>
+                    </div>
+                </div>
+                <button class="am-claim-btn" id="automineClaimBtn">⏳ Ждём 10 ⛏️</button>
+            </div>
+
+            <div class="exchange-section">
+                <div class="slider-container">
+                    <label>🔄 <span id="exchangeAmount">0</span> руды → 💠</label>
+                    <input type="range" id="exchangeSlider" min="0" max="100" value="0" step="1">
+                </div>
+                <div class="exchange-buttons">
+                    <button class="ex-btn" id="toessenceBtn"><i class="fas fa-exchange-alt"></i> Обменять</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- МОИ КАРТЫ -->
+    <section id="section-mycards" class="section">
+        <div class="section-header">
+            <h1><i class="fas fa-layer-group"></i> Мои карты</h1>
+            <span class="section-info" id="collectionTotal">0 карт</span>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-box"><div class="label">🎴 Всего</div><div class="value" id="totalCards">0</div></div>
+            <div class="stat-box"><div class="label">🏷️ Рангов</div><div class="value" id="totalRanks">0</div></div>
+            <div class="stat-box"><div class="label">⭐ Редких</div><div class="value" id="rareCards">0</div></div>
+        </div>
+        <div class="search-bar">
+            <input type="text" class="search-input" id="searchInput" placeholder="🔍 Поиск по названию или рангу...">
+        </div>
+        <div class="filters-wrapper">
+            <div class="filters" id="collectionFilters">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="M">M</button>
+                <button class="filter-btn" data-filter="T">T</button>
+                <button class="filter-btn" data-filter="K">K</button>
+                <button class="filter-btn" data-filter="Y">Y</button>
+                <button class="filter-btn" data-filter="U">U</button>
+                <button class="filter-btn" data-filter="Q">Q</button>
+                <button class="filter-btn" data-filter="R">R</button>
+                <button class="filter-btn" data-filter="Z">Z</button>
+                <button class="filter-btn" data-filter="O">O</button>
+                <button class="filter-btn" data-filter="H" style="color:#ff6600;">🎃 H</button>
+                <button class="filter-btn" data-filter="N" style="color:#4a9eff;">❄️ N</button>
+                <button class="filter-btn" data-filter="V" style="color:#ff6b9d;">🌸 V</button>
+                <button class="filter-btn" data-filter="L" style="color:#ffcc00;">☀️ L</button>
+            </div>
+        </div>
+        <div class="card-grid" id="collectionGrid"></div>
+    </section>
+
+    <!-- КАТАЛОГ -->
+    <section id="section-catalog" class="section">
+        <div class="section-header">
+            <h1><i class="fas fa-book-open"></i> Каталог карт</h1>
+            <span class="section-info" id="catalogTotal">0 карт</span>
+        </div>
+        <div class="filters-wrapper">
+            <div class="filters" id="catalogFilters">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="M">M</button>
+                <button class="filter-btn" data-filter="T">T</button>
+                <button class="filter-btn" data-filter="K">K</button>
+                <button class="filter-btn" data-filter="Y">Y</button>
+                <button class="filter-btn" data-filter="U">U</button>
+                <button class="filter-btn" data-filter="Q">Q</button>
+                <button class="filter-btn" data-filter="R">R</button>
+                <button class="filter-btn" data-filter="Z">Z</button>
+                <button class="filter-btn" data-filter="O">O</button>
+                <button class="filter-btn" data-filter="H" style="color:#ff6600;">🎃 H</button>
+                <button class="filter-btn" data-filter="N" style="color:#4a9eff;">❄️ N</button>
+                <button class="filter-btn" data-filter="V" style="color:#ff6b9d;">🌸 V</button>
+                <button class="filter-btn" data-filter="L" style="color:#ffcc00;">☀️ L</button>
+            </div>
+        </div>
+        <div class="card-grid" id="catalogGrid"></div>
+    </section>
+
+    <!-- СЕТЫ -->
+    <section id="section-sets" class="section">
+        <div class="section-header">
+            <h1><i class="fas fa-object-group"></i> Сеты</h1>
+            <span class="section-info">Коллекции карт по сетам</span>
+        </div>
+        <div class="set-grid" id="setsGrid"></div>
+    </section>
+
+    <!-- ПАКИ -->
+    <section id="section-packs" class="section">
+        <div class="section-header">
+            <h1><i class="fas fa-box"></i> Паки</h1>
+            <span class="section-info" id="packEssenceDisplay">💠 0</span>
+        </div>
+        <div class="packs-wrapper">
+            <div class="pack-info">
+                <h3>📦 Что такое пак?</h3>
+                <p>
+                    <strong style="color:#b388ff;">Пак</strong> — это набор из <strong style="color:#b388ff;">3 случайных карт</strong>.
+                    Открывая пак, вы можете выбрать <strong style="color:#f5b342;">только 1 карту</strong> — остальные исчезнут.
+                    <br><br>
+                    💡 <span style="color:#6b7084;">Дубликаты приносят +7 💠 и +5 XP</span>
+                </p>
+            </div>
+            <div class="pack-card">
+                <div class="pack-icon">🌟</div>
+                <div class="pack-name">Универсальный пак</div>
+                <div class="pack-desc">3 уникальные карты из всех рангов</div>
+                <span class="pack-price">50 💠</span>
+                <button class="pack-btn" id="openPackBtn">🎴 Открыть</button>
+                <div class="pack-rarity-info">
+                    <span class="r-M">M</span><span class="r-T">T</span><span class="r-K">K</span>
+                    <span class="r-Y">Y</span><span class="r-U">U</span><span class="r-Q">Q</span>
+                    <span class="r-R">R</span><span class="r-Z">Z</span><span class="r-O">O</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЕЖЕДНЕВНЫЕ КВЕСТЫ -->
+    <section id="section-quests" class="section">
+        <div class="section-header">
+            <h1><i class="fas fa-tasks"></i> Ежедневные квесты</h1>
+            <span class="section-info" id="questDate">Сегодня</span>
+        </div>
+
+        <div class="daily-quests-panel">
+            <div class="dq-header">
+                <h2>🎯 Задания на сегодня</h2>
+                <div class="dq-timer">
+                    ⏰ До сброса: <strong id="questResetTimer">23:59:59</strong>
+                </div>
+            </div>
+
+            <div class="dq-list" id="dqList"></div>
+
+            <div class="dq-bonus" id="dqBonus">
+                <div class="dq-bonus-info">
+                    <div class="dq-bonus-icon">🏆</div>
+                    <div>
+                        <div class="dq-bonus-title">Бонус за все 4 квестов</div>
+                        <div class="dq-bonus-desc" id="dqBonusProgress">Выполнено 0/4</div>
+                    </div>
+                </div>
+                <button class="dq-bonus-btn" id="dqBonusBtn" disabled>
+                    🎁 Забрать бонус
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ИВЕНТ -->
+    <section id="section-event" class="section">
+        <div class="section-header">
+            <h1><i class="fas fa-calendar-alt"></i> <span id="eventSectionTitle">🎃 Хэллоуин</span></h1>
+            <div class="section-info">
+                <i class="fas fa-star" style="color:#ffcc66;"></i> <strong id="eventCurrencyValue">0</strong>
+            </div>
+        </div>
+        <div class="event-info-panel">
+            <div class="event-icon" id="eventSectionIcon">🎃</div>
+            <div>
+                <div class="event-name" id="eventSectionName">Хэллоуин</div>
+                <div class="event-desc">Ивентовые карты ранга <strong id="eventSectionRank" style="color:#ff6600;">H</strong></div>
+                <div class="event-timer" id="eventSectionTimer">⏳ До конца ивента: 5д 12ч</div>
+            </div>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-box"><div class="label">🎴 Валюта</div><div class="value" id="eventCurrencyStat" style="color:#ffcc66;">0</div></div>
+            <div class="stat-box"><div class="label">📦 Собрано</div><div class="value" id="eventCardsCount" style="color:#ffcc66;">0</div></div>
+            <div class="stat-box"><div class="label">🏆 Всего</div><div class="value" id="eventTotalCards" style="color:#ffcc66;">0</div></div>
+        </div>
+        <div class="pack-card" id="eventPackCard" style="margin-bottom:16px;">
+            <div class="pack-icon" id="eventPackIcon">🎃</div>
+            <div class="pack-name" id="eventPackName">Хэллоуинский пак</div>
+            <div class="pack-desc">🎴 3 случайные ивентовые карты ранга <strong id="eventPackRank" style="color:#ff6600;">H</strong></div>
+            <span class="pack-price" id="eventPackPrice">20 🎃</span>
+            <span style="font-size:12px;opacity:0.4;display:block;margin-bottom:8px;" id="eventPackCurrencyDisplay">У вас: 0 🎃</span>
+            <button class="pack-btn" id="openEventPackBtn" style="background:linear-gradient(135deg,#ff6600,#cc3300);">🎴 Открыть</button>
+        </div>
+        <div style="margin-top:16px;">
+            <div class="section-header" style="margin-bottom:12px;">
+                <h2 style="font-size:18px;font-weight:600;"><i class="fas fa-star" style="color:#ffcc66;"></i> Ивентовые карты</h2>
+                <span class="section-info" id="eventCardsOwned">0/0 собрано</span>
+            </div>
+            <div class="card-grid" id="eventCardsGrid"></div>
+        </div>
+    </section>
+
+    <!-- ЧАТ -->
+    <section id="section-chat" class="section">
+        <div class="section-header">
+            <h1><i class="fas fa-comment-dots"></i> Общий чат</h1>
+            <div class="section-info">
+                <i class="fas fa-gem" style="color:#b388ff;"></i> <strong id="essenceDisplayChat">0</strong>
+            </div>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-box"><div class="label">💬 Сообщений</div><div class="value" id="chatTotalMessages" style="color:#b388ff;">0</div></div>
+            <div class="stat-box"><div class="label">📊 Сегодня</div><div class="value" id="chatSoulsToday" style="color:#ff6b6b;">0/10</div></div>
+            <div class="stat-box"><div class="label">🏆 Рейтинг</div><div class="value" id="chatRating" style="color:#ffcc66;">0</div></div>
+        </div>
+        <div style="background:rgba(0,0,0,0.2);border-radius:14px;padding:14px 16px;margin-bottom:16px;border:1px solid rgba(255,255,255,0.04);">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+                <span style="font-size:13px;color:#6b7084;">
+                    📊 Осталось: <strong id="chatMessagesUntilReward" style="color:#ff6b6b;">10</strong>
+                </span>
+                <span style="font-size:12px;color:#6b7084;">
+                    ✨ +5 XP · 💠 +7
+                </span>
+            </div>
+            <div style="height:4px;background:rgba(255,255,255,0.05);border-radius:4px;margin-top:8px;overflow:hidden;">
+                <div id="chatProgressFill" style="height:100%;width:0%;background:linear-gradient(90deg,#b388ff,#7c4dff);border-radius:4px;transition:width 0.3s ease;"></div>
+            </div>
+        </div>
+        <div class="game-panel" style="padding:0;overflow:hidden;">
+            <div style="background:rgba(0,0,0,0.2);padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-weight:700;font-size:14px;color:#b388ff;">💬 Общий чат</span>
+                <span style="font-size:11px;opacity:0.4;" id="chatOnlineCountSection">👤 0</span>
+            </div>
+            <div class="chat-messages-section" id="chatMessagesSection" style="height:350px;overflow-y:auto;padding:12px 16px;display:flex;flex-direction:column;gap:4px;scroll-behavior:smooth;">                <div class="chat-message system">
+                    <span class="msg-text">💬 Добро пожаловать в общий чат! Пишите сообщения и получайте 💠 Эссенцию и ✨ XP! (10 сообщений в день)</span>
+                </div>
+            </div>
+            <div style="border-top:1px solid rgba(255,255,255,0.04);padding:10px 14px;background:rgba(0,0,0,0.15);display:flex;gap:8px;">
+                <input type="text" id="chatInputSection" placeholder="Напишите сообщение..." maxlength="200" minlength="4"
+                    style="flex:1;padding:8px 14px;border-radius:30px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.06);color:#e4e6f0;font-size:13px;outline:none;">
+                <button id="chatSendBtnSection" style="width:38px;height:38px;border-radius:50%;border:none;background:linear-gradient(135deg,#b388ff,#7c4dff);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">➤</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОБМЕН -->
+<!--     <section id="section-trade" class="section">
+        <div class="section-header">
+            <h1><i class="fas fa-exchange-alt"></i> Обмен картами</h1>
+            <div class="section-info">
+                <i class="fas fa-gem" style="color:#b388ff;"></i> <strong id="essenceDisplayTrade">0</strong>
+                &nbsp;·&nbsp;
+                <i class="fas fa-layer-group"></i> <strong id="tradeCardsCount">0</strong>
+            </div>
+        </div>
+        <div class="game-panel" style="margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+                <span style="font-weight:700;font-size:16px;color:#b388ff;">📤 Создать предложение</span>
+                <span style="font-size:12px;color:#6b7084;">Выберите до 9 своих карт</span>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
+                <input type="text" id="tradeReceiverId" placeholder="ID получателя..." style="flex:1;min-width:150px;padding:10px 14px;border-radius:12px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06);color:#e4e6f0;font-size:14px;outline:none;">
+                <button class="trade-btn warning" id="loadReceiverCardsBtn">📥 Загрузить карты</button>
+            </div>
+            <div style="margin-bottom:10px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px;">
+                    <span style="font-size:13px;color:#6b7084;">🎴 Мои карты (до 9):</span>
+                    <span style="font-size:12px;color:#b388ff;" id="senderSelectedCount">0/9</span>
+                    <span style="font-size:11px;color:#ffcc66;" id="senderSelectedInfo"></span>
+                </div>
+                <div class="card-grid" id="senderCardsGrid" style="grid-template-columns:repeat(auto-fill,minmax(95px,1fr));gap:6px;max-height:260px;overflow-y:auto;padding:4px;"></div>
+            </div>
+            <div style="margin-bottom:10px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px;">
+                    <span style="font-size:13px;color:#6b7084;" id="receiverLabel">🎴 Карты получателя (от 1 до 9):</span>
+                    <span style="font-size:12px;color:#b388ff;" id="receiverSelectedCount">0/9</span>
+                </div>
+                <div class="card-grid" id="receiverCardsGrid" style="grid-template-columns:repeat(auto-fill,minmax(95px,1fr));gap:6px;max-height:260px;overflow-y:auto;padding:4px;"></div>
+                <div id="receiverEmptyState" style="text-align:center;padding:20px;color:#6b7084;font-size:13px;">
+                    <span>👤 Введите ID получателя и нажмите "Загрузить карты"</span>
+                </div>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+                <button class="trade-btn primary" id="createTradeBtn" style="flex:1;min-width:120px;">📤 Отправить</button>
+                <button class="trade-btn secondary" id="clearTradeSelectionBtn" style="flex:0.5;min-width:80px;">🔄 Очистить</button>
+            </div>
+        </div>
+        <div class="game-panel" style="margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+                <span style="font-weight:700;font-size:16px;color:#b388ff;">📥 Входящие</span>
+                <span style="font-size:12px;color:#6b7084;" id="incomingTradesCount">0</span>
+            </div>
+            <div id="incomingTradesList">
+                <div style="text-align:center;padding:20px;color:#6b7084;font-size:14px;">📭 Нет входящих предложений</div>
+            </div>
+        </div>
+        <div class="game-panel" style="margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+                <span style="font-weight:700;font-size:16px;color:#b388ff;">📤 Мои предложения</span>
+                <span style="font-size:12px;color:#6b7084;" id="myTradesCount">0</span>
+            </div>
+            <div id="myTradesList">
+                <div style="text-align:center;padding:20px;color:#6b7084;font-size:14px;">📤 Нет отправленных</div>
+            </div>
+        </div>
+        <div class="game-panel">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+                <span style="font-weight:700;font-size:16px;color:#b388ff;">📜 История</span>
+                <button class="trade-btn-sm danger" id="clearTradeHistoryBtn">🗑️ Очистить</button>
+            </div>
+            <div id="tradeHistoryList">
+                <div style="text-align:center;padding:20px;color:#6b7084;font-size:14px;">📜 История пуста</div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- МИНИ-ИГРЫ -->
+    <section id="section-minigames" class="section">
+        <div class="section-header">
+            <h1><i class="fas fa-feather"></i> Аркана: Звёздный ловец</h1>
+            <span class="section-info">Уклоняйся от метеоритов и собирай ⭐</span>
+        </div>
+
+        <div class="mini-game-panel" id="mgPanel-flappy">
+            <div class="fg-wrapper">
+                <div class="fg-main">
+                    <div class="fg-stage" id="fgStage">
+                        <canvas id="fgCanvas" width="360" height="640"></canvas>
+
+                        <div class="fg-overlay" id="fgStartOverlay">
+                            <div class="fg-hero">🛸</div>
+                            <h2>Аркана: Звёздный ловец</h2>
+                            <p>Двигай платформу влево-вправо<br>Лови <b>⭐ звёзды</b>, уклоняйся от <b style="color:#b388ff;">☄️ метеоритов</b></p>
+                            <div class="fg-stats-preview">
+                                <span>🏆 <b id="fgBestPreview">0</b></span>
+                                <span>💠 <b id="fgTodayEssence">0</b>/50</span>
+                            </div>
+                            <button class="fg-play-btn" id="fgPlayBtn">
+                                <i class="fas fa-play"></i> ИГРАТЬ
+                            </button>
+                        </div>
+
+                        <div class="fg-overlay" id="fgOverOverlay" style="display:none;">
+                            <div class="fg-emoji">💥</div>
+                            <h2>Игра окончена</h2>
+                            <div class="fg-score-big" id="fgFinalScore">0</div>
+                            <div class="fg-rewards" id="fgRewards"></div>
+                            <button class="fg-play-btn" id="fgRetryBtn">
+                                <i class="fas fa-redo"></i> ЕЩЁ РАЗ
+                            </button>
+                        </div>
+
+                        <div class="fg-hud" id="fgHUD" style="display:none;">
+                            <div class="fg-hud-item">
+                                <span class="fg-hud-label">СЧЁТ</span>
+                                <span class="fg-hud-value" id="fgScore">0</span>
+                            </div>
+                            <div class="fg-hud-item fg-hud-essence">
+                                <span class="fg-hud-label">💠</span>
+                                <span class="fg-hud-value" id="fgEssence">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fg-bottom-stats">
+                        <div class="fg-bottom-card">
+                            <div class="fg-bottom-icon">🏆</div>
+                            <div class="fg-bottom-value" id="fgBottomBest">0</div>
+                            <div class="fg-bottom-label">Рекорд</div>
+                        </div>
+                        <div class="fg-bottom-card">
+                            <div class="fg-bottom-icon">💠</div>
+                            <div class="fg-bottom-value" id="fgBottomEssence">0/50</div>
+                            <div class="fg-bottom-label">Сегодня</div>
+                        </div>
+                        <div class="fg-bottom-card">
+                            <div class="fg-bottom-icon">🎯</div>
+                            <div class="fg-bottom-value" id="fgBottomGames">0</div>
+                            <div class="fg-bottom-label">Игр</div>
+                        </div>
+                    </div>
+
+                    <div class="fg-daily-bottom">
+                        <div class="fg-daily-header">
+                            <span>💠 Дневной лимит</span>
+                            <span><b id="fgDailyCollected">0</b>/50</span>
+                        </div>
+                        <div class="fg-daily-bar">
+                            <div class="fg-daily-fill" id="fgDailyFill" style="width:0%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ТОП -->
+    <section id="section-top" class="section">
+        <div class="section-header">
+            <h1><i class="fas fa-trophy"></i> Топ игроков</h1>
+            <span class="section-info" id="totalPlayersCount">👥 Всего: 0</span>
+        </div>
+        <div class="top-wrapper">
+            <div class="game-panel">
+                <ul class="top-list" id="topList">
+                    <li style="justify-content:center; opacity:0.4;">Загрузка...</li>
+                </ul>
+                <div class="player-rank-block" id="playerRankBlock" style="display:none;">
+                    📊 Ваше место: <strong id="playerRank">—</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРОФИЛЬ -->
+    <section id="section-profile" class="section">
+        <div class="section-header">
+            <h1><i class="fas fa-user"></i> Профиль</h1>
+            <span class="section-info">Ваша статистика</span>
+        </div>
+
+        <div class="profile-banner">
+            <div class="profile-banner-inner">
+                <div class="big-avatar" id="profileAvatar">🧙</div>
+                <div class="profile-info-block">
+                    <div class="profile-nick" id="profileName">Игрок</div>
+                    <div class="profile-rank-tag" id="profileRankTag">🏆 Новичок</div>
+                    <div class="profile-id" id="playerIdDisplay" onclick="copyPlayerId()">🆔 loading...</div>
+                    <div class="profile-join"><i class="fas fa-calendar-alt"></i> В игре с <span id="profileJoinDate">сегодня</span></div>
+                </div>
+                <div class="profile-stats-block">
+                    <div class="p-stat"><div class="num" id="profileLevel">1</div><div class="lbl">Уровень</div></div>
+                    <div class="p-stat"><div class="num" id="profileEssence">0</div><div class="lbl">Эссенция</div></div>
+                    <div class="p-stat"><div class="num" id="profileCardsCount">0</div><div class="lbl">Карты</div></div>
+                    <div class="p-stat"><div class="num" id="profileOre">0</div><div class="lbl">Руда</div></div>
+                </div>
+            </div>
+
+            <div class="exp-bar-wrapper">
+                <div class="exp-info">
+                    <span>⭐ Уровень <strong id="expLevelLabel">1</strong></span>
+                    <span><strong id="expCurrentLabel">0</strong> / <strong id="expNextLabel">75</strong> XP (<strong id="expPercent">0%</strong>)</span>
+                </div>
+                <div class="exp-bar">
+                    <div class="exp-bar-fill" id="expBarFill" style="width:0%;"></div>
+                </div>
+            </div>
+
+            <div class="achievements-block">
+                <div class="ach-title">🏅 Достижения</div>
+                <div class="achievements-grid" id="achievementsGrid"></div>
+            </div>
+        </div>
+
+        <div class="calendar-block">
+            <div class="calendar-header">
+                <span class="cal-title">📅 ЕЖЕДНЕВНЫЙ КАЛЕНДАРЬ</span>
+                <span class="cal-streak" id="calendarStreak">🔥 День 1</span>
+            </div>
+            <div class="calendar-grid" id="calendarGrid"></div>
+            <div class="calendar-bonus" id="calendarBonus"></div>
+        </div>
+
+        <div style="margin-top:16px;background:rgba(20,24,36,0.6);border-radius:16px;padding:16px 20px;border:1px solid rgba(255,255,255,0.04);">
+            <div style="font-weight:700;font-size:15px;color:#b388ff;margin-bottom:8px;">🔗 Привязка профиля MangaBuff</div>
+            <div id="profileLinkStatus">
+                <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+                    <span style="font-size:13px;color:#7a7f98;opacity:0.5;">Не привязан</span>
+                    <button id="openProfileLinkBtn" style="padding:8px 20px;border-radius:30px;font-weight:700;font-size:13px;cursor:pointer;border:none;background:rgba(123,77,255,0.15);color:#b388ff;">Привязать</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="ad-button-wrapper">
+            <button class="ad-main-btn" id="openAdBtn">
+                <span class="ad-icon">📺</span>
+                <span class="ad-text">
+                    <span class="main">Смотреть рекламу</span>
+                    <span class="sub">+7 💠 и +15 XP</span>
+                </span>
+                <span class="ad-badge-count" id="adBadgeCount">3</span>
+            </button>
+        </div>
+
+        <div class="history">
+            <div class="history-title">📜 ИСТОРИЯ</div>
+            <div id="historyContainer">—</div>
+        </div>
+    </section>
+
+    <!-- НАСТРОЙКИ -->
+    <section id="section-settings" class="section">
+        <div class="section-header">
+            <h1><i class="fas fa-cog"></i> Настройки</h1>
+            <span class="section-info">Управление аккаунтом</span>
+        </div>
+        <div class="settings-section">
+            <div class="setting-group">
+                <div class="group-title">💾 Резервное копирование</div>
+                <div class="setting-row">
+                    <span class="label">📤 Экспорт данных</span>
+                    <button class="btn-sm success" id="exportDataBtn">Копировать</button>
+                </div>
+                <div class="setting-row">
+                    <span class="label">📥 Импорт данных</span>
+                    <button class="btn-sm" id="importDataBtn">Восстановить</button>
+                </div>
+                <div id="importArea" style="display:none; margin-top:10px;">
+                    <textarea id="importDataInput" placeholder="Вставьте скопированные данные..." style="width:100%;padding:10px;border-radius:12px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.05);color:#e4e6f0;font-size:12px;font-family:monospace;resize:vertical;min-height:80px;outline:none;"></textarea>
+                    <button class="btn-sm danger" id="confirmImportBtn" style="margin-top:8px;width:100%;padding:10px;">⚠️ Подтвердить</button>
+                </div>
+            </div>
+            <div class="setting-group">
+                <div class="group-title">🔊 Звук</div>
+                <div class="setting-row">
+                    <span class="label">Звук клика</span>
+                    <label class="switch">
+                        <input type="checkbox" id="soundToggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="setting-group">
+                <div class="group-title">🗑️ Аккаунт</div>
+                <div class="setting-row">
+                    <span class="label">Удалить все данные</span>
+                    <button class="btn-sm danger" id="deleteDataBtn">🗑️ Удалить</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РЫНОК -->
+    <section id="section-market" class="section">
+        <div class="section-header">
+            <h1><i class="fas fa-store"></i> Рынок карт</h1>
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                <span class="section-info" id="marketStats">Загрузка...</span>
+                <button class="market-create-btn" onclick="openCreateMarketModal()">
+                    <i class="fas fa-plus"></i>
+                    <span>Выставить</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="market-tabs-main">
+            <button class="market-tab-main active" data-mtab="sell">
+                💰 Лоты <span class="count" id="sellCount">0</span>
+            </button>
+            <button class="market-tab-main" data-mtab="buy">
+                🛒 Заявки <span class="count" id="buyCount">0</span>
+            </button>
+            <button class="market-tab-main" data-mtab="mine">
+                👑 Мои <span class="count" id="mineCount">0</span>
+            </button>
+        </div>
+
+        <div id="market-tab-sell">
+            <div class="market-sub-tabs">
+                <button class="market-sub-tab active" data-msub="all">🌐 Все</button>
+                <button class="market-sub-tab" data-msub="affordable">✅ Могу купить</button>
+            </div>
+            <div class="search-bar" style="margin-bottom:14px;">
+                <input type="text" class="search-input" id="marketSellSearch" placeholder="🔍 Поиск по названию карты...">
+            </div>
+            <div class="market-list" id="marketSellList"></div>
+        </div>
+
+        <div id="market-tab-buy" style="display:none;">
+            <div class="market-sub-tabs">
+                <button class="market-sub-tab active" data-msub-buy="all">🌐 Все</button>
+                <button class="market-sub-tab" data-msub-buy="canFulfill">💰 Могу продать</button>
+            </div>
+            <div class="search-bar" style="margin-bottom:14px;">
+                <input type="text" class="search-input" id="marketBuySearch" placeholder="🔍 Поиск по названию карты...">
+            </div>
+            <div class="market-list" id="marketBuyList"></div>
+        </div>
+
+        <div id="market-tab-mine" style="display:none;">
+            <div class="market-list" id="marketMineList"></div>
+        </div>
+    </section>
+
+    <!-- МАГАЗИН -->
+    <section id="section-shop" class="section">
+        <div class="section-header">
+            <h1><i class="fas fa-gem"></i> Магазин эссенции</h1>
+            <span class="section-info">
+                <i class="fas fa-gem" style="color:#b388ff;"></i>
+                <strong id="shopGemsDisplay">0</strong> эссенции
+            </span>
+        </div>
+
+        <!-- Инфо-баннер -->
+        <div class="shop-info-banner">
+            <div class="shop-info-icon">💠</div>
+            <div class="shop-info-content">
+                <div class="shop-info-title">Эссенция — игровая валюта</div>
+                <div class="shop-info-desc">
+                    Эссенцию можно потратить на <b>паки с картами</b>, <b>улучшение кирки</b> и <b>другие функции</b>.
+                    Покупка через ЮMoney. После оплаты — <b>обязательно</b> отправь чек в Telegram.
+                </div>
+            </div>
+        </div>
+
+        <!-- Как купить -->
+        <div class="shop-howto">
+            <div class="shop-howto-step">
+                <div class="step-num">1</div>
+                <div class="step-text">Выбери пакет</div>
+            </div>
+            <div class="shop-howto-arrow">→</div>
+            <div class="shop-howto-step">
+                <div class="step-num">2</div>
+                <div class="step-text">Оплати через ЮMoney</div>
+            </div>
+            <div class="shop-howto-arrow">→</div>
+            <div class="shop-howto-step">
+                <div class="step-num">3</div>
+                <div class="step-text">Отправь чек + ID в <a href="https://t.me/paytopay" target="_blank">@paytopay</a></div>
+            </div>
+            <div class="shop-howto-arrow">→</div>
+            <div class="shop-howto-step">
+                <div class="step-num">4</div>
+                <div class="step-text">Получи эссенции (до 24ч)</div>
+            </div>
+        </div>
+
+        <!-- Мои заявки -->
+        <div id="myDonationsBlock" style="display:none; margin-bottom:16px;">
+            <div class="shop-section-title">📋 Мои заявки</div>
+            <div id="myDonationsList" class="shop-requests-list"></div>
+        </div>
+
+        <!-- Пакеты -->
+        <div class="shop-packs-grid" id="shopPacksGrid"></div>
+
+        <!-- FAQ -->
+        <div class="shop-faq">
+            <div class="shop-faq-title">❓ Частые вопросы</div>
+            <div class="shop-faq-item">
+                <div class="shop-faq-q">Когда начислят эссенция?</div>
+                <div class="shop-faq-a">После проверки чека админом. Обычно до 24 часов. Если долго — напиши в Telegram.</div>
+            </div>
+            <div class="shop-faq-item">
+                <div class="shop-faq-q">Как найти свой ID?</div>
+                <div class="shop-faq-a">Открой свой профиль — ID показан под ником. Нажми на него — скопируется.</div>
+            </div>
+            <div class="shop-faq-item">
+                <div class="shop-faq-q">Что если я не отправил чек?</div>
+                <div class="shop-faq-a">Эссенция не начислятся. Обязательно отправь чек и ID в @paytopay.</div>
+            </div>
+            <div class="shop-faq-item">
+                <div class="shop-faq-q">Можно вернуть деньги?</div>
+                <div class="shop-faq-a">Цифровые товары возврату не подлежат. Но если что-то не начислилось — напиши, разберёмся.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- НОВОСТИ / ЧТО НОВОГО -->
+    <section id="section-news" class="section">
+        <div class="section-header">
+            <h1><i class="fas fa-newspaper"></i> Что нового</h1>
+            <span class="section-info" id="newsCount">0 обновлений</span>
+        </div>
+
+        <div class="market-sub-tabs" style="margin-bottom:16px;">
+            <button class="market-sub-tab active" data-news-filter="all">🌐 Все</button>
+            <button class="market-sub-tab" data-news-filter="update">🆕 Обновления</button>
+            <button class="market-sub-tab" data-news-filter="event">🎉 Ивенты</button>
+            <button class="market-sub-tab" data-news-filter="hotfix">🔧 Фиксы</button>
+            <button class="market-sub-tab" data-news-filter="announcement">📢 Анонсы</button>
+        </div>
+
+        <div id="newsList" style="display:flex;flex-direction:column;gap:12px;"></div>
+    </section>
+
+    <section id="section-suggest" class="section">
+        <div class="section-header">
+            <h1><i class="fas fa-palette"></i> Предложить карту</h1>
+            <span class="section-info">Загрузи свою картинку от 512 до 2048</span>
+        </div>
+
+        <div class="game-panel" style="max-width:600px; margin:0 auto;">
+            <div style="background:rgba(255,204,102,0.08); border-left:3px solid #ffcc66; padding:14px 18px; border-radius:12px; margin-bottom:20px; font-size:13px; line-height:1.6; color:#ffcc66;">
+                ⚠️ <b>Правила:</b><br>
+                • Картинка <b>от 512 до 2048 px</b>, JPG или PNG<br>
+                • Нельзя предлагать карты рангов <b>M, T, N, H, V, L</b> — их добавляют только админы<br>
+                • Заявка рассматривается в течение 24 часов<br>
+                • Решение придёт в <b>уведомления</b> 🔔
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <label style="font-size:13px;color:#8b90a8;display:block;margin-bottom:6px;">
+                    📛 Имя персонажа
+                </label>
+                <input type="text" id="suggestName" maxlength="40"
+                    placeholder="Например: Годжо Сатору"
+                    class="search-input">
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <label style="font-size:13px;color:#8b90a8;display:block;margin-bottom:6px;">
+                    📚 Сет
+                </label>
+                <input type="text" id="suggestSet" maxlength="40"
+                    placeholder="Например: Магическая Битва"
+                    class="search-input"
+                    list="existingSets">
+                <datalist id="existingSets">
+                    <option value="Genshin Impact">
+                    <option value="Магическая Битва">
+                    <option value="Человек Бензопила">
+                    <option value="Атака Титанов">
+                    <option value="Токийские Мстители">
+                    <option value="Благословение Небожителей">
+                    <option value="ZZZ">
+                    <option value="Nier: Automata">
+                    <option value="Синий Архив">
+                </datalist>
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <label style="font-size:13px;color:#8b90a8;display:block;margin-bottom:6px;">
+                    🏆 Ранг
+                </label>
+                <select id="suggestRank" class="search-input">
+                    <option value="">— выбери ранг —</option>
+                    <option value="K">K — Королевская</option>
+                    <option value="Y">Y — Ледяная</option>
+                    <option value="U">U — Урановая</option>
+                    <option value="Q">Q — Квантовая</option>
+                    <option value="R">R — Радужная</option>
+                    <option value="Z">Z — Загадочная</option>
+                    <option value="O">O — Ониксовая</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <label style="font-size:13px;color:#8b90a8;display:block;margin-bottom:6px;">
+                    ✨ Редкость (автоматически по рангу)
+                </label>
+                <input type="text" id="suggestRarity" readonly
+                       placeholder="Сначала выбери ранг"
+                       style="width:100%; padding:12px; border-radius:12px;
+                              background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.06);
+                              color:#e4e6f0; font-size:14px; outline:none;">
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <label style="font-size:13px;color:#8b90a8;display:block;margin-bottom:6px;">
+                    🖼️ Картинка (от 512 до 2048)
+                </label>
+                <input type="file" id="suggestImage" accept="image/png,image/jpeg"
+                    style="width:100%; padding:12px; border-radius:12px;
+                           background:rgba(0,0,0,0.3); border:1px dashed rgba(179,136,255,0.3);
+                           color:#8b90a8; cursor:pointer;">
+                <div id="suggestPreview" style="margin-top:12px; text-align:center;"></div>
+            </div>
+
+            <div style="margin-bottom:20px;">
+                <label style="font-size:13px;color:#8b90a8;display:block;margin-bottom:6px;">
+                    💬 Комментарий (опционально)
+                </label>
+                <textarea id="suggestComment" maxlength="300"
+                    placeholder="Откуда арт, что за персонаж..."
+                    style="width:100%; min-height:80px; padding:12px 16px; border-radius:12px;
+                           background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.06);
+                           color:#e4e6f0; font-size:13px; outline:none; resize:vertical;
+                           font-family:inherit;"></textarea>
+            </div>
+
+            <button class="pack-btn" id="suggestSubmitBtn" style="width:100%;"
+                onclick="submitCardSuggestion()">
+                📤 Отправить заявку
+            </button>
+
+            <div id="suggestStatus" style="margin-top:14px; text-align:center; font-size:13px;"></div>
+        </div>
+
+        <!-- Мои заявки -->
+        <div class="section-header" style="margin-top:32px; margin-bottom:12px;">
+            <h2 style="font-size:18px; font-weight:600;">
+                <i class="fas fa-history"></i> Мои заявки
+            </h2>
+        </div>
+        <div id="mySuggestions" style="max-width:600px; margin:0 auto;"></div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="/privacy.html">🔒 Политика</a>
+            <a href="/terms.html">📄 Соглашение</a>
+            <a href="/rules.html">📋 Правила</a>
+            <a href="/offer.html">📜 Оферта</a>
+            <a href="/copyright.html">© Правообладателям</a>
+            <a href="https://t.me/paytopy" target="_blank">📧 Контакты</a>
+        </div>
+        <div class="footer-warning">
+            ⚠️ Все материалы взяты из открытых источников.
+            По вопросам правообладателей: <a href="https://t.me/paytopy">@paytopy</a>
+        </div>
+        <div class="footer-bottom">
+            <a href="https://yoomoney.ru/to/4100119003253255" target="_blank" style="color:#ffcc66;">❤️ Поддержать</a>
+            <a href="https://t.me/b_loody" target="_blank" style="color:#0088cc;">📢 Telegram</a>
+            <span style="opacity:0.4;">© 2026 Arcana Nexus</span>
+        </div>
+    </footer>
+</main>
+
+<!-- МОДАЛКИ -->
+
+<!-- Уведомление о сбросе данных -->
+<div class="modal-overlay" id="dataResetModal" style="z-index: 9998;">
+    <div class="modal-content" style="max-width: 460px; text-align: center;">
+        <div style="font-size: 64px; margin-bottom: 14px; animation: pulse 2s infinite;">⚠️</div>
+
+        <div class="modal-title" style="color: #ffcc66; font-size: 20px;">
+            Игровые данные утеряны
+        </div>
+
+        <div style="background: rgba(255, 107, 107, 0.08); border-left: 3px solid #ff6b6b; padding: 14px 18px; border-radius: 12px; margin: 16px 0; text-align: left;">
+            <div style="font-size: 12px; font-weight: 800; color: #ff6b6b; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px;">
+                💾 Потеря прогресса
+            </div>
+            <div style="font-size: 13px; line-height: 1.6; color: #c8cad6;">
+                Все игровые данные были удалены в связи с
+                <b style="color: #ffcc66;">окончанием периода хостинга</b>.
+            </div>
+        </div>
+
+        <div style="background: rgba(68, 255, 136, 0.08); border-left: 3px solid #44ff88; padding: 14px 18px; border-radius: 12px; margin-bottom: 16px; text-align: left;">
+            <div style="font-size: 12px; font-weight: 800; color: #44ff88; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px;">
+                🔑 Есть ключ восстановления?
+            </div>
+            <div style="font-size: 13px; line-height: 1.6; color: #c8cad6;">
+                Если у вас остался <b style="color: #44ff88;">ключ восстановления</b> (экспорт данных),
+                вы можете восстановить прогресс <b>на момент копирования ключа</b>.
+                <br><br>
+                <span style="color: #8b90a8; font-size: 12px;">
+                    📍 <b>Настройки → Импорт данных → Вставить ключ</b>
+                </span>
+            </div>
+        </div>
+
+        <div class="modal-buttons" style="margin-top: 8px;">
+            <button class="modal-btn upgrade" onclick="closeDataResetModal()" style="width: 100%; padding: 14px;">
+                🚀 Понятно, играем!
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Улучшение кирки -->
+<div class="modal-overlay" id="pickaxeModal">
+    <div class="modal-content">
+        <button class="modal-close" id="pickaxeModalClose">&times;</button>
+        <div class="modal-title">🔧 Улучшение кирки</div>
+        <div class="stat-row"><span class="label">Текущий уровень</span><span class="value" id="pickaxeModalCurrentLevel">1</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="pickaxeProgressFill" style="width:10%;"></div></div>
+        <div class="stat-row"><span class="label">Следующий уровень</span><span class="value highlight" id="pickaxeModalNextLevel">2</span></div>
+        <div class="stat-row"><span class="label">💠 Нужно Эссенции</span><span class="value" id="pickaxeModalCost">30</span></div>
+        <div class="stat-row"><span class="label">💠 У вас</span><span class="value" id="pickaxeModalessence">0</span></div>
+        <div class="reward-preview">
+            <span>📊 Добыча: <span id="pickaxeModalMinOre">5</span>-<span id="pickaxeModalMaxOre">9</span> → <span id="pickaxeModalNewMinOre">6</span>-<span id="pickaxeModalNewMaxOre">10</span></span>
+        </div>
+
+        <!-- ===== УДАРНАЯ ВОЛНА ===== -->
+        <div style="margin-top: 16px; padding-top: 16px; border-top: 2px solid rgba(179, 136, 255, 0.1);">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+                <div>
+                    <div style="font-weight: 700; font-size: 14px; color: #ffaa33;">⚡ УДАРНАЯ ВОЛНА</div>
+                    <div style="font-size: 11px; color: #8b90a8;">Каждый клик даёт +25 ударов</div>
+                </div>
+                <div id="shockwaveStatus" style="font-size: 12px; font-weight: 700; color: #ff6b6b;">🔒 НЕ КУПЛЕНО</div>
+            </div>
+            <button id="shockwaveBuyBtn" style="width: 100%; padding: 12px; border-radius: 40px; font-weight: 700; font-size: 14px; cursor: pointer; border: none; transition: 0.3s; background: linear-gradient(135deg, #ffaa33, #ff6600); color: #fff;">
+                🛒 КУПИТЬ (50 000 ⛏️)
+            </button>
+            <div id="shockwaveInfo" style="font-size: 11px; color: #8b90a8; margin-top: 8px; text-align: center; display: none;">
+                ⚡ Улучшение активно! Каждый клик даёт +25 ударов.
+            </div>
+        </div>
+
+        <div class="modal-buttons">
+            <button class="modal-btn close" id="pickaxeModalCloseBtn">Закрыть</button>
+            <button class="modal-btn upgrade" id="pickaxeModalUpgradeBtn">Улучшить</button>
+        </div>
+    </div>
+</div>
+
+<!-- МОДАЛКА АНИМАЦИИ ОТКРЫТИЯ ПАКА -->
+<div class="pack-opening-modal" id="packOpeningModal">
+    <div class="po-bg-rays" id="poBgRays"></div>
+    <div class="po-particles" id="poParticles"></div>
+    <div class="po-flash" id="poFlash"></div>
+    <div class="po-card-container" id="poCardContainer">
+        <div class="po-card" id="poCard">
+            <div class="po-card-glow" id="poCardGlow"></div>
+            <div class="po-card-inner" id="poCardInner"></div>
+        </div>
+    </div>
+    <div class="po-info" id="poInfo">
+        <div class="po-info-rank" id="poInfoRank">M</div>
+        <div class="po-info-name" id="poInfoName">Название карты</div>
+        <div class="po-info-rarity" id="poInfoRarity">Мифическая</div>
+        <div class="po-info-stars" id="poInfoStars"></div>
+    </div>
+    <div class="po-progress" id="poProgress">
+        <span class="po-progress-dot active"></span>
+        <span class="po-progress-dot"></span>
+        <span class="po-progress-dot"></span>
+    </div>
+    <div class="po-actions" id="poActions">
+        <button class="po-skip-btn" id="poSkipBtn">Пропустить →</button>
+    </div>
+    <div class="po-hint" id="poHint">Кликни, чтобы продолжить</div>
+
+    <!-- ЭКРАН ВЫБОРА КАРТЫ -->
+    <div class="po-select-screen" id="poSelectScreen">
+        <div class="po-select-title">
+            <div class="po-select-title-main">🎴 ВЫБЕРИ КАРТУ</div>
+            <div class="po-select-title-sub">Остальные две сгорят</div>
+        </div>
+        <div class="po-select-cards" id="poSelectCards"></div>
+        <div class="po-select-hint">Нажми на карту, чтобы забрать её</div>
+    </div>
+</div>
+
+<!-- Ввод имени -->
+<div class="modal-overlay" id="nameModal">
+    <div class="modal-content" style="max-width:380px;">
+        <div class="modal-title">🌟 Добро пожаловать!</div>
+        <div style="text-align:center;font-size:48px;margin-bottom:10px;">⛏️</div>
+        <p style="text-align:center;color:#6b7084;margin-bottom:14px;">Введите ваше имя, чтобы начать игру</p>
+        <input type="text" id="playerNameInput" placeholder="Ваше имя..." style="width:100%;padding:14px;border-radius:40px;border:1px solid rgba(255,255,255,0.05);background:rgba(0,0,0,0.3);color:#e4e6f0;font-size:16px;text-align:center;outline:none;">
+        <div class="modal-buttons" style="margin-top:14px;">
+            <button class="modal-btn upgrade" id="saveNameBtn" style="width:100%;">ПОДТВЕРДИТЬ</button>
+        </div>
+    </div>
+</div>
+
+<!-- Профиль игрока -->
+<div class="modal-overlay player-profile-modal" id="playerProfileModal">
+    <div class="modal-content">
+        <button class="modal-close" id="playerProfileClose">&times;</button>
+        <div class="modal-title" id="playerProfileName">Игрок</div>
+        <div style="text-align:center;font-size:48px;padding:8px 0;" id="playerProfileAvatar">🧙</div>
+        <div id="playerProfileId" style="text-align:center; margin-bottom:12px;"></div>
+        <div class="stat-row"><span class="label">⭐ Уровень</span><span class="value" id="playerProfileLevel">1</span></div>
+        <div class="stat-row"><span class="label">💠 Эссенция</span><span class="value" id="playerprofileEssence">0</span></div>
+        <div class="stat-row"><span class="label">🎴 Всего карт</span><span class="value" id="playerProfileCards">0</span></div>
+        <div style="margin:12px 0 8px;text-align:center;font-weight:600;color:#6b7084;font-size:13px;">📊 Коллекция</div>
+        <div class="cards-preview" id="playerProfileCardsPreview"></div>
+        <div style="text-align:center;margin-top:12px;" id="playerProfileMbLink"></div>
+        <div class="modal-buttons" style="margin-top:12px;">
+            <button class="modal-btn close" id="playerProfileCloseBtn">Закрыть</button>
+        </div>
+    </div>
+</div>
+
+<!-- Привязка -->
+<div class="modal-overlay" id="profileLinkModal">
+    <div class="modal-content" style="max-width:380px;">
+        <button class="modal-close" id="profileLinkModalClose">&times;</button>
+        <div class="modal-title">🔗 Привязка MangaBuff</div>
+        <p style="text-align:center;color:#6b7084;margin-bottom:14px;">Введите ID вашего профиля на MangaBuff</p>
+        <p style="text-align:center;font-size:12px;opacity:0.4;margin-bottom:8px;">Формат: https://mangabuff.ru/users/ID</p>
+        <input type="text" id="profileLinkInput" placeholder="например: 1234567" style="width:100%;padding:14px;border-radius:40px;border:1px solid rgba(255,255,255,0.05);background:rgba(0,0,0,0.3);color:#e4e6f0;font-size:16px;text-align:center;outline:none;">
+        <div style="font-size:11px;opacity:0.3;text-align:center;margin:8px 0;">Привязать можно только 1 раз!</div>
+        <div class="modal-buttons" style="margin-top:10px;">
+            <button class="modal-btn close" id="profileLinkCancelBtn">Отмена</button>
+            <button class="modal-btn upgrade" id="saveProfileLinkBtn">Привязать</button>
+        </div>
+    </div>
+</div>
+
+<!-- Реклама -->
+<div class="ad-modal" id="adModal">
+    <div class="ad-content">
+        <div class="ad-header">
+            <div class="ad-header-title">🎬 ПАРТНЁРСКАЯ РЕКЛАМА</div>
+            <button class="ad-close-btn" id="adCloseBtn">✕</button>
+        </div>
+        <div class="ad-body">
+            <div id="adVideoPlaceholder">
+                <div class="ad-video-placeholder">
+                    <div class="ad-gif-container">
+                        <div class="ad-badge">⭐ @B_LOODY</div>
+                        <div class="ad-live">🔥 LIVE</div>
+                        <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" alt="Реклама">
+                    </div>
+                    <div class="ad-timer">
+                        <span class="ad-timer-label">⏳ ОСТАЛОСЬ</span>
+                        <span class="ad-timer-display" id="adTimerDisplay">20</span>
+                        <span class="ad-timer-sec">сек</span>
+                    </div>
+                    <div class="ad-progress"><div class="ad-progress-fill" id="adProgressFill"></div></div>
+                    <div class="ad-hint">⚡ Досмотрите до конца, чтобы получить награду</div>
+                </div>
+            </div>
+            <div id="adRewardBlock" style="display:none;">
+                <div class="ad-reward-icon">🎁</div>
+                <div class="ad-reward-title">НАГРАДА ПОЛУЧЕНА!</div>
+                <div class="ad-reward-desc">💠 +7 · ✨ +15 XP</div>
+                <div class="ad-buttons">
+                    <button class="ad-reward-btn" id="adRewardBtn">✅ ЗАБРАТЬ</button>
+                    <a href="https://yoomoney.ru/to/4100119003253255" target="_blank" class="ad-support-btn">❤️ ПОМОЧЬ</a>
+                </div>
+            </div>
+        </div>
+        <div class="ad-footer">⚠️ Закрытие до окончания = отказ от награды</div>
+    </div>
+</div>
+
+<!-- МОДАЛКА РЫНКА -->
+<div class="modal-overlay" id="marketModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeMarketModal()">&times;</button>
+        <div class="modal-title">Рынок</div>
+        <div class="modal-body"></div>
+        <div class="modal-actions"></div>
+    </div>
+</div>
+
+<!-- МОДАЛКА ПОКУПКИ -->
+<div class="modal-overlay" id="shopBuyModal">
+    <div class="modal-content" style="max-width: 460px;">
+        <button class="modal-close" onclick="closeShopBuyModal()">&times;</button>
+        <div class="modal-title">💠 Покупка эссенции</div>
+
+        <div id="shopBuyContent"></div>
+
+        <div class="modal-buttons" style="margin-top:16px;">
+            <button class="modal-btn close" onclick="closeShopBuyModal()">Отмена</button>
+            <button class="modal-btn upgrade" id="shopBuyConfirmBtn">
+                💳 Перейти к оплате
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= УВЕДОМЛЕНИЯ ================= -->
+<div class="modal-overlay" id="notificationsModal">
+    <div class="modal-content" style="max-width:480px;">
+        <button class="modal-close" onclick="closeNotificationsModal()">&times;</button>
+        <div class="modal-title">🔔 Уведомления</div>
+        <div id="notificationsList" style="max-height:60vh; overflow-y:auto; display:flex; flex-direction:column; gap:8px;">
+            <div style="text-align:center; opacity:0.4; padding:20px;">Загрузка...</div>
+        </div>
+        <div class="modal-buttons" style="margin-top:12px;">
+            <button class="modal-btn close" onclick="markAllNotificationsRead()">Прочитать все</button>
+            <button class="modal-btn close" onclick="closeNotificationsModal()">Закрыть</button>
+        </div>
+    </div>
+</div>
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js?=v2025140926"></script>
+    <script src="js/interstitial.js?=v2039140926"></script>
+    <script src="js/storage.js?=v2025140926"></script>
+    <script src="js/cards.js?=v2025140926"></script>
+    <script src="js/quests.js?=v2025140926"></script>
+    <script src="js/news.js?=v2025140926"></script>
+    <script src="js/shop.js?=v2025140926"></script>
+    <script src="js/market.js?=v2025140926"></script>
+    <script src="js/profile.js?=v2025140926"></script>
+    <script src="js/chat.js?=v2025140926"></script>
+    <script src="js/mine.js?=v2025140926"></script>
+    <script src="js/supabase.js?=v2037140926"></script>
+    <script src="js/settings.js?=v2025140926"></script>
+    <script src="js/suggest.js?=v2025140926"></script>  
+    <script src="js/ui.js?=v2025140926"></script>
+    <script src="js/notifications.js?=v2025140926"></script>
+
+    <!-- ============================================================
+         УВЕДОМЛЕНИЕ О СБРОСЕ ДАННЫХ
+         ============================================================ -->
+    <script>
+    (function() {
+        function showDataResetModal() {
+            const modal = document.getElementById('dataResetModal');
+            if (!modal) return;
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        window.closeDataResetModal = function() {
+            const modal = document.getElementById('dataResetModal');
+            if (!modal) return;
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+            localStorage.setItem('arcana_data_reset_ack', '1');
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Показываем один раз — пока игрок не нажмёт «Понятно»
+            if (!localStorage.getItem('arcana_data_reset_ack')) {
+                setTimeout(showDataResetModal, 1500);
+            }
+        });
+    })();
+    </script>
+</body>
+</html>

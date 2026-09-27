@@ -1,0 +1,292 @@
+/* ============================================================
+   АДАПТИВ
+   ============================================================ */
+
+/* ===== МИНИ-ИГРЫ (mg-*) ===== */
+@media (max-width: 900px) {
+    .mg-wrapper { gap: 8px; }
+    .mg-main { gap: 6px; }
+    .mg-bottom-card { padding: 6px 3px; }
+    .mg-bottom-icon { font-size: 13px; }
+    .mg-bottom-value { font-size: 13px; }
+    .mg-bottom-label { font-size: 7px; }
+    .mg-daily-bottom { padding: 8px 10px; }
+}
+
+@media (max-width: 480px) {
+    .mg-overlay .mg-hero { font-size: 46px; }
+    .mg-overlay h2 { font-size: 16px; }
+    .mg-overlay p { font-size: 10px; }
+    .mg-score-big { font-size: 30px; }
+    .mg-play-btn { padding: 10px 24px; font-size: 12px; }
+    .mg-stats-preview { font-size: 10px; }
+    .mg-control-hint { font-size: 9px; padding: 4px 10px; bottom: 6px; }
+
+    .mg-hud-item { padding: 3px 6px; min-width: 40px; }
+    .mg-hud-value { font-size: 11px; }
+    .mg-hud-label { font-size: 6px; }
+
+    .mg-bottom-stats { gap: 4px; }
+    .mg-bottom-card { padding: 5px 2px; border-radius: 8px; }
+    .mg-bottom-icon { font-size: 12px; }
+    .mg-bottom-value { font-size: 12px; }
+    .mg-bottom-label { font-size: 7px; }
+
+    .mg-daily-bottom { padding: 6px 8px; border-radius: 8px; }
+    .mg-daily-header { font-size: 10px; margin-bottom: 4px; }
+    .mg-daily-bar { height: 4px; margin-bottom: 3px; }
+    .mg-daily-reset { font-size: 8px; }
+}
+
+@media (max-width: 380px) {
+    .mg-overlay h2 { font-size: 15px; }
+    .mg-score-big { font-size: 26px; }
+    .mg-play-btn { padding: 9px 20px; font-size: 11px; }
+    .mg-bottom-icon { font-size: 11px; }
+    .mg-bottom-value { font-size: 11px; }
+    .mg-bottom-label { font-size: 6px; }
+}
+
+/* ============================================================
+   АДАПТИВ ШАПКИ
+   ============================================================ */
+
+/* 1100px — уменьшаем отступы, шрифт валют */
+@media (max-width: 1100px) {
+    .header { padding: 0 14px; gap: 10px; }
+    .header .header-search { max-width: 200px; }
+    .header .header-balance .balance-item { padding: 5px 10px; font-size: 12px; }
+    .hourly-bonus-btn { padding: 7px 12px; font-size: 11px; }
+    .header .header-user .user-name { max-width: 70px; font-size: 12px; }
+    .header .header-user .user-avatar { width: 34px; height: 34px; font-size: 16px; }
+}
+
+/* 1024px — поиск поменьше */
+@media (max-width: 1024px) {
+    .header .header-search { max-width: 250px; }
+    .header .header-balance .balance-item { padding: 5px 10px; font-size: 12px; }
+}
+
+/* 950px — прячем поиск */
+@media (max-width: 950px) {
+    .header .header-search { display: none; }
+    .hourly-bonus-btn { padding: 7px 12px; }
+}
+
+/* 768px — планшет/большой телефон */
+@media (max-width: 768px) {
+    body { padding-top: 56px; }
+    .header { height: 56px; padding: 0 12px 0 60px; gap: 10px; }
+
+    .header .header-logo { font-size: 18px; }
+    .header .header-logo span { display: none; }
+
+    .header .header-search { display: none; }
+
+    /* Баланс — сжимаем */
+    .header .header-balance { gap: 6px; margin-left: auto; }
+    .header .header-balance .balance-item {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+
+    /* Ежечасный бонус — только иконка */
+    .hourly-bonus-btn {
+        padding: 8px 10px;
+        min-width: 40px;
+        justify-content: center;
+        gap: 0;
+    }
+    .hourly-bonus-btn .hourly-text,
+    .hourly-bonus-btn #hourlyBonusText { display: none; }
+    .hourly-bonus-btn i,
+    .hourly-bonus-btn .bonus-icon { font-size: 16px; margin: 0; }
+
+    /* Имя пользователя прячем */
+    .header .header-user .user-name { display: none; }
+
+    /* Гамбургер */
+    .hamburger-btn { display: flex; }
+
+    /* Сайдбар */
+    .sidebar {
+        top: 0; left: -260px; width: 240px;
+        height: 100vh; padding: 70px 12px 20px;
+        transition: left 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+        z-index: 200; background: rgba(18, 22, 36, 0.98);
+    }
+    .sidebar.open { left: 0; }
+
+    /* Контент */
+    .main-content { margin-left: 0; padding: 16px 12px 30px; }
+    .section-header h1 { font-size: 18px; }
+    .section-header .section-info { font-size: 12px; }
+
+    /* Профиль */
+    .profile-banner { padding: 18px 16px; }
+    .profile-banner .big-avatar { width: 70px; height: 70px; font-size: 32px; }
+    .profile-banner .profile-info-block .profile-nick { font-size: 20px; }
+    .profile-banner .profile-stats-block { gap: 8px; width: 100%; }
+    .profile-banner .profile-stats-block .p-stat { flex: 1; min-width: 60px; padding: 8px 10px; }
+    .profile-banner .profile-stats-block .p-stat .num { font-size: 16px; }
+    .profile-banner .profile-stats-block .p-stat .lbl { font-size: 9px; }
+
+    /* Карточки */
+    .card-grid { grid-template-columns: repeat(auto-fill, minmax(105px, 1fr)); gap: 8px; }
+    .card-item { min-height: 145px; padding: 6px 5px; }
+    .card-item .card-image { height: 75px; font-size: 28px; }
+    .card-item .card-stars .star { font-size: 8px; }
+    .card-item .card-rank { width: 22px; height: 22px; font-size: 10px; }
+    .card-item .card-name { font-size: 9px; }
+    .card-item .card-rarity { font-size: 7px; }
+
+    /* Кирка */
+    .pickaxe-btn { width: 140px; height: 140px; }
+    .pickaxe-btn .pickaxe-icon { font-size: 48px; }
+
+    /* Статы */
+    .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .stat-box { padding: 8px 6px; }
+    .stat-box .value { font-size: 15px; }
+    .stat-box .label { font-size: 9px; }
+
+    /* Кнопки */
+    .btn-row .btn { min-width: 70px; padding: 10px 12px; font-size: 12px; }
+
+    /* Модалки */
+    .modal-content { padding: 20px 16px; margin: 10px; }
+    .pick-modal-content { padding: 20px 16px; max-width: 96%; }
+    .pick-cards { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .pick-card { min-height: 150px; padding: 6px 4px; }
+    .pick-card .pick-image { height: 80px; font-size: 26px; }
+    .pick-card .pick-rank { font-size: 14px; }
+    .pick-card .pick-name { font-size: 9px; }
+
+    /* Сеты, паки, топ */
+    .set-grid { grid-template-columns: 1fr; }
+    .packs-wrapper, .top-wrapper { max-width: 100%; }
+}
+
+/* ============================================================
+   480px — ТЕЛЕФОН
+   ============================================================ */
+@media (max-width: 480px) {
+    body { padding-top: 52px; }
+    .header { height: 52px; padding: 0 8px 0 54px; gap: 6px; }
+
+    .header .header-logo { font-size: 15px; }
+    .header .header-logo span { display: none; }
+    .header .header-logo i { font-size: 22px; }
+
+    /* ===== ВАЖНО: в шапке только иконки валют, без цифр ===== */
+    .header .header-balance { gap: 5px; margin-left: auto; }
+    .header .header-balance .balance-item {
+        padding: 4px 8px;
+        min-width: 32px;
+        justify-content: center;
+        gap: 0;
+    }
+    .header .header-balance .balance-item span { display: none; }
+    .header .header-balance .balance-item i { font-size: 14px; }
+
+    /* Ежечасный бонус — компактнее */
+    .hourly-bonus-btn { padding: 6px 8px; min-width: 36px; }
+    .hourly-bonus-btn i { font-size: 14px; }
+
+    /* Аватар */
+    .header .header-user .user-avatar { width: 30px; height: 30px; font-size: 15px; }
+
+    /* Гамбургер */
+    .hamburger-btn { top: 10px; left: 10px; width: 36px; height: 36px; }
+
+    /* Контент */
+    .main-content { padding: 10px 8px 20px; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .section-header h1 { font-size: 16px; }
+
+    /* Профиль */
+    .profile-banner { padding: 14px 12px; border-radius: 16px; }
+    .profile-banner .big-avatar { width: 60px; height: 60px; font-size: 26px; }
+    .profile-banner .profile-info-block .profile-nick { font-size: 17px; }
+    .profile-banner .profile-info-block .profile-rank-tag { font-size: 10px; padding: 3px 10px; }
+    .profile-banner .profile-stats-block .p-stat { padding: 6px 8px; }
+    .profile-banner .profile-stats-block .p-stat .num { font-size: 14px; }
+
+    /* Карточки — 3 в ряд */
+    .card-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .card-item { min-height: 130px; padding: 5px 4px; border-radius: 10px; }
+    .card-item .card-image { height: 65px; font-size: 24px; border-radius: 7px; }
+    .card-item .card-stars .star { font-size: 7px; }
+    .card-item .card-rank { width: 18px; height: 18px; font-size: 9px; }
+    .card-item .card-name { font-size: 8px; }
+    .card-item .card-rarity { font-size: 7px; }
+    .card-item .card-count { font-size: 8px; padding: 1px 4px; }
+
+    /* Кирка */
+    .pickaxe-btn { width: 120px; height: 120px; }
+    .pickaxe-btn .pickaxe-icon { font-size: 38px; }
+
+    /* Панели и статы */
+    .game-panel { padding: 14px 12px; border-radius: 16px; }
+    .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 4px; }
+    .stat-box { padding: 6px 4px; border-radius: 10px; }
+    .stat-box .label { font-size: 8px; }
+    .stat-box .value { font-size: 13px; }
+
+    /* Кнопки */
+    .btn-row { flex-direction: column; gap: 6px; }
+    .btn-row .btn { width: 100%; padding: 10px; font-size: 12px; }
+
+    /* Шахта */
+    .strikes-counter { font-size: 11px; padding: 6px 10px; }
+    .strikes-counter .strikes-text { font-size: 10px; }
+    .exchange-section { padding: 12px; }
+    .bonus-block { padding: 8px 12px; flex-direction: column; text-align: center; }
+
+    /* Модалки */
+    .modal-content { padding: 16px 12px; margin: 6px; border-radius: 16px; }
+    .modal-content .modal-title { font-size: 17px; }
+    .modal-content .stat-row { padding: 8px 10px; font-size: 12px; }
+    .modal-content .stat-row .value { font-size: 15px; }
+
+    /* Футер */
+    .footer-links a { font-size: 10px; padding: 3px 10px; }
+
+    /* Достижения */
+    .achievement-item { width: 44px; height: 44px; font-size: 18px; }
+
+    /* Пик-модалка */
+    .pick-modal-content { padding: 16px 12px; max-width: 98%; border-radius: 16px; }
+    .pick-modal-content h2 { font-size: 17px; }
+    .pick-modal-content .pick-sub { font-size: 11px; margin-bottom: 10px; }
+    .pick-cards { grid-template-columns: repeat(3, 1fr); gap: 5px; }
+    .pick-card { min-height: 130px; padding: 5px 3px; border-radius: 8px; }
+    .pick-card .pick-image { height: 65px; font-size: 22px; border-radius: 6px; }
+    .pick-card .pick-rank { font-size: 12px; }
+    .pick-card .pick-name { font-size: 8px; }
+    .pick-card .pick-rarity { font-size: 7px; }
+    .pick-card .pick-badge { font-size: 8px; padding: 1px 6px; }
+}
+
+/* ============================================================
+   380px — ОЧЕНЬ УЗКИЙ ТЕЛЕФОН
+   ============================================================ */
+@media (max-width: 380px) {
+    /* В шапке — только иконки валют (на всякий случай повторяем) */
+    .header .header-balance .balance-item span { display: none; }
+    .header .header-balance .balance-item {
+        padding: 5px 7px;
+        min-width: 30px;
+        justify-content: center;
+    }
+    .header .header-balance .balance-item i { font-size: 13px; }
+}
+
+/* ============================================================
+   ДЕСКТОП — гамбургер и оверлей не нужны
+   ============================================================ */
+@media (min-width: 769px) {
+    .hamburger-btn { display: none !important; }
+    .sidebar-overlay { display: none !important; }
+    .sidebar { left: 0 !important; }
+}

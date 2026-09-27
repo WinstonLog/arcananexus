@@ -1,0 +1,501 @@
+/* РЫНОК */
+.market-tabs-main {
+            display: flex; gap: 6px; margin-bottom: 16px;
+            background: rgba(20, 24, 36, 0.6);
+            padding: 6px; border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .market-tab-main {
+            flex: 1; padding: 12px 16px; border-radius: 12px;
+            border: none; background: transparent;
+            color: #8b90a8; font-size: 13px; font-weight: 700;
+            cursor: pointer; transition: 0.25s; font-family: inherit;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .market-tab-main:hover { color: #e4e6f0; background: rgba(255,255,255,0.03); }
+        .market-tab-main.active {
+            background: linear-gradient(135deg, rgba(179,136,255,0.25), rgba(123,77,255,0.15));
+            color: #b388ff;
+            box-shadow: 0 0 20px rgba(123, 77, 255, 0.2);
+        }
+        .market-tab-main .count {
+            background: #7c4dff; color: #fff;
+            font-size: 10px; padding: 2px 7px;
+            border-radius: 20px; font-weight: 700;
+            min-width: 20px;
+        }
+
+        /* Компактная кнопка "Выставить" в шапке */
+        .market-create-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #b388ff, #7c4dff);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            transition: 0.25s;
+            font-family: inherit;
+            box-shadow: 0 4px 15px rgba(123, 77, 255, 0.3);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .market-create-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(123, 77, 255, 0.5);
+        }
+        .market-create-btn:active { transform: scale(0.96); }
+        .market-create-btn i { font-size: 12px; }
+
+        @media (max-width: 480px) {
+            .market-create-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+        }
+
+        .market-sub-tabs {
+            display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap;
+        }
+        .market-sub-tab {
+            padding: 7px 14px; border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(20, 24, 36, 0.6);
+            color: #8b90a8; font-size: 12px; font-weight: 700;
+            cursor: pointer; transition: 0.25s; font-family: inherit;
+        }
+        .market-sub-tab:hover { color: #e4e6f0; }
+        .market-sub-tab.active {
+            background: rgba(179,136,255,0.15);
+            color: #b388ff;
+            border-color: rgba(179,136,255,0.3);
+        }
+
+        .market-list {
+            display: flex; flex-direction: column; gap: 8px;
+        }
+        .market-lot {
+            background: rgba(20, 24, 36, 0.7);
+            border-radius: 14px; padding: 12px 14px;
+            border: 1px solid rgba(255,255,255,0.04);
+            transition: 0.2s; display: flex; align-items: center;
+            gap: 12px; position: relative; cursor: pointer;
+        }
+        .market-lot:hover {
+            border-color: rgba(179, 136, 255, 0.25);
+            background: rgba(30, 34, 48, 0.8);
+        }
+        .market-lot.mine {
+            border-color: rgba(255, 204, 102, 0.3);
+            background: rgba(30, 26, 18, 0.6);
+        }
+        .market-lot.mine::before {
+            content: '👑 ВАШ';
+            position: absolute; top: -8px; left: 12px;
+            background: linear-gradient(135deg, #ffcc66, #ffaa33);
+            color: #1a1a2e; font-size: 9px; font-weight: 900;
+            padding: 2px 8px; border-radius: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .market-lot-seller {
+            display: flex; align-items: center; gap: 8px;
+            min-width: 120px; flex-shrink: 0;
+        }
+        .market-lot-avatar {
+            width: 34px; height: 34px; border-radius: 50%;
+            background: linear-gradient(135deg, #7c4dff, #b388ff);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 15px; flex-shrink: 0;
+            border: 2px solid rgba(179, 136, 255, 0.3);
+        }
+        .market-lot-seller-info { min-width: 0; flex: 1; }
+        .market-lot-seller-name {
+            font-size: 12px; font-weight: 700; color: #e4e6f0;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .market-lot-seller-time {
+            font-size: 10px; color: #6b7084;
+        }
+
+        .market-lot-card {
+            display: flex; align-items: center; gap: 10px;
+            min-width: 150px; flex-shrink: 0;
+        }
+        .market-lot-card-img {
+            width: 44px; height: 58px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; font-weight: 900;
+            border: 2px solid; background: rgba(0,0,0,0.4);
+            flex-shrink: 0; overflow: hidden;
+            box-shadow: 0 0 15px -5px currentColor;
+        }
+        .market-lot-card-img img { width: 100%; height: 100%; object-fit: cover; }
+        .market-lot-card-name {
+            font-size: 12px; font-weight: 700; color: #e4e6f0;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            max-width: 100px;
+        }
+        .market-lot-card-set {
+            font-size: 10px; color: #6b7084;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            max-width: 100px;
+        }
+
+        .market-lot-price {
+            display: flex; align-items: center; gap: 8px;
+            margin-left: auto; flex-shrink: 0;
+        }
+        .market-lot-price-label {
+            font-size: 10px; color: #6b7084;
+            text-transform: uppercase; font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .market-lot-price-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+        .market-price-tag {
+            display: flex; align-items: center; gap: 3px;
+            padding: 5px 10px; border-radius: 10px;
+            font-size: 14px; font-weight: 900;
+            border: 2px solid; background: rgba(0,0,0,0.3);
+            min-width: 52px; justify-content: center;
+        }
+        .market-price-tag .r { font-size: 15px; line-height: 1; }
+        .market-price-tag .c { font-size: 11px; opacity: 0.8; }
+
+        .market-lot-action { flex-shrink: 0; margin-left: 4px; }
+        .market-btn {
+            padding: 10px 16px; border-radius: 12px;
+            border: none; font-weight: 700; font-size: 12px;
+            cursor: pointer; transition: 0.25s; font-family: inherit;
+            display: inline-flex; align-items: center; gap: 6px;
+            white-space: nowrap;
+        }
+        .market-btn.buy {
+            background: linear-gradient(135deg, #2ecc71, #27ae60); color: #fff;
+        }
+        .market-btn.buy:hover:not(:disabled) { transform: translateY(-2px); }
+        .market-btn.buy:disabled {
+            opacity: 0.35; cursor: not-allowed;
+            background: rgba(255,255,255,0.05); color: #6b7084;
+        }
+        .market-btn.sell {
+            background: linear-gradient(135deg, #ffcc66, #ffaa33); color: #1a1a2e;
+        }
+        .market-btn.sell:hover:not(:disabled) { transform: translateY(-2px); }
+        .market-btn.sell:disabled {
+            opacity: 0.35; cursor: not-allowed;
+            background: rgba(255,255,255,0.05); color: #6b7084;
+        }
+        .market-btn.cancel {
+            background: rgba(255, 107, 107, 0.15); color: #ff6b6b;
+            border: 1px solid rgba(255, 107, 107, 0.2);
+        }
+
+        .market-empty {
+            text-align: center; padding: 50px 20px; color: #6b7084;
+        }
+        .market-empty .icon { font-size: 56px; margin-bottom: 10px; opacity: 0.5; }
+        .market-empty .title { font-size: 16px; font-weight: 700; color: #8b90a8; margin-bottom: 6px; }
+        .market-empty .desc { font-size: 12px; }
+
+        /* Модалка рынка */
+        .market-preview {
+            display: flex; gap: 16px; align-items: center;
+            padding: 16px; background: rgba(0,0,0,0.3);
+            border-radius: 16px; margin-bottom: 16px;
+        }
+        .market-preview-img {
+            width: 90px; height: 120px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 42px; font-weight: 900; border: 3px solid;
+            background: rgba(0,0,0,0.4); flex-shrink: 0;
+            overflow: hidden;
+        }
+        .market-preview-img img { width: 100%; height: 100%; object-fit: cover; }
+        .market-preview-info { flex: 1; min-width: 0; }
+        .market-preview-info .name { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+        .market-preview-info .rank-badge {
+            display: inline-block; padding: 3px 10px; border-radius: 20px;
+            font-size: 11px; font-weight: 700; margin-bottom: 6px;
+        }
+        .market-preview-info .set { font-size: 12px; color: #8b90a8; margin-bottom: 6px; }
+
+        .market-check-block {
+            background: rgba(0,0,0,0.2); border-radius: 14px;
+            padding: 14px; margin-bottom: 14px;
+        }
+        .market-check-title {
+            font-size: 11px; color: #6b7084;
+            text-transform: uppercase; letter-spacing: 1px;
+            font-weight: 700; margin-bottom: 10px;
+        }
+        .market-check-row {
+            display: flex; justify-content: space-between;
+            align-items: center; padding: 6px 0; font-size: 13px;
+        }
+        .market-check-row .label {
+            display: flex; align-items: center; gap: 8px; color: #8b90a8;
+        }
+        .market-check-row .rank-mini {
+            width: 24px; height: 24px; border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900; font-size: 12px; border: 1px solid;
+        }
+        .market-check-row .value { font-weight: 700; }
+        .market-check-row .value.ok { color: #44ff44; }
+        .market-check-row .value.fail { color: #ff6b6b; }
+
+        .market-price-big {
+            display: flex; flex-direction: column;
+            align-items: center; padding: 12px 16px;
+            border-radius: 12px; border: 2px solid;
+            background: rgba(0,0,0,0.3); min-width: 70px;
+        }
+        .market-price-big .rank { font-size: 24px; font-weight: 900; line-height: 1; }
+        .market-price-big .count {
+            font-size: 12px; color: #8b90a8;
+            font-weight: 700; margin-top: 2px;
+        }
+
+        .market-rank-picker {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 6px; margin-bottom: 14px;
+        }
+        .market-rank-opt {
+            padding: 10px 8px; border-radius: 10px;
+            border: 2px solid; background: rgba(0,0,0,0.3);
+            cursor: pointer; transition: 0.2s; text-align: center;
+        }
+        .market-rank-opt:hover { transform: translateY(-2px); }
+        .market-rank-opt.selected {
+            box-shadow: 0 0 0 2px #b388ff, 0 0 20px rgba(123,77,255,0.3);
+            background: rgba(179,136,255,0.1);
+        }
+        .market-rank-opt .r { font-size: 20px; font-weight: 900; line-height: 1; }
+        .market-rank-opt .lbl {
+            font-size: 9px; color: #8b90a8;
+            text-transform: uppercase; margin-top: 3px;
+        }
+
+        .market-qty {
+            display: flex; align-items: center; gap: 10px;
+            background: rgba(0,0,0,0.3); border-radius: 12px;
+            padding: 10px 14px; border: 1px solid rgba(255,255,255,0.04);
+            margin-bottom: 8px;
+        }
+        .market-qty button {
+            width: 36px; height: 36px; border-radius: 50%;
+            border: none; background: rgba(179,136,255,0.15);
+            color: #b388ff; font-size: 20px; font-weight: 700;
+            cursor: pointer; transition: 0.2s;
+            display: flex; align-items: center; justify-content: center;
+            font-family: inherit;
+        }
+        .market-qty button:hover { background: rgba(179,136,255,0.25); }
+        .market-qty input {
+            flex: 1; background: transparent; border: none;
+            color: #e4e6f0; font-size: 22px; font-weight: 900;
+            text-align: center; outline: none; font-family: inherit;
+        }
+        .market-qty .remove {
+            background: rgba(255,107,107,0.15);
+            color: #ff6b6b;
+            flex-shrink: 0;
+        }
+
+        .market-card-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+            gap: 8px; max-height: 300px; overflow-y: auto; padding: 4px;
+        }
+        .market-select-card {
+            position: relative;
+            background: linear-gradient(180deg, rgba(30,30,50,0.98), rgba(15,15,25,0.98));
+            border-radius: 10px; padding: 6px 5px 8px;
+            text-align: center; border: 2px solid var(--card-color, #ffcc66);
+            cursor: pointer; transition: 0.25s; min-height: 130px;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .market-select-card:hover { transform: translateY(-4px); }
+        .market-select-card .c-img {
+            width: 100%; height: 70px; border-radius: 6px;
+            background: rgba(0,0,0,0.4);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; font-weight: 900;
+            color: var(--card-color, #ffcc66);
+            margin-bottom: 4px; overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .market-select-card .c-img img { width: 100%; height: 100%; object-fit: cover; }
+        .market-select-card .c-rank {
+            position: absolute; top: 4px; left: 4px;
+            font-size: 10px; font-weight: 900;
+            background: rgba(0,0,0,0.85); color: var(--card-color, #ffcc66);
+            width: 20px; height: 20px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 5px; border: 2px solid var(--card-color, #ffcc66);
+        }
+        .market-select-card .c-count {
+            position: absolute; top: 4px; right: 4px;
+            font-size: 9px; font-weight: 800;
+            background: linear-gradient(135deg, #ffcc66, #ffaa33);
+            color: #1a1a2e; padding: 2px 6px;
+            border-radius: 20px;
+        }
+        .market-select-card .c-name {
+            font-size: 9px; font-weight: 800; color: #f0f2fa;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            width: 100%;
+        }
+
+        /* Бейджи на карточках в каталоге */
+        .market-card-badge {
+            position: absolute; top: 5px; right: 5px;
+            display: flex; gap: 3px; z-index: 5;
+        }
+        .market-card-badge .b-sell {
+            font-size: 9px; font-weight: 800;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: #fff; padding: 3px 7px;
+            border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);
+        }
+        .market-card-badge .b-buy {
+            font-size: 9px; font-weight: 800;
+            background: linear-gradient(135deg, #ffcc66, #ffaa33);
+            color: #1a1a2e; padding: 3px 7px;
+            border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        @media (max-width: 700px) {
+            .market-lot { flex-direction: column; align-items: stretch; gap: 10px; }
+            .market-lot-seller, .market-lot-card, .market-lot-price { min-width: 0; }
+            .market-lot-price { margin-left: 0; }
+            .market-lot-action { margin-left: 0; }
+            .market-btn { width: 100%; justify-content: center; }
+        }
+
+/* ОБМЕН */
+.trade-card-select {
+            cursor: pointer; transition: 0.2s;
+            position: relative; min-height: 80px;
+            padding: 8px 4px; border-radius: 12px;
+        }
+        .trade-card-select:hover { transform: translateY(-2px); border-color: rgba(179, 136, 255, 0.3); }
+        .trade-card-select.selected {
+            border-color: #b388ff !important;
+            box-shadow: 0 0 20px rgba(123, 77, 255, 0.2);
+        }
+        .trade-card-select.selected::after {
+            content: '✓'; position: absolute;
+            top: -6px; right: -6px;
+            background: #b388ff; color: #fff;
+            width: 20px; height: 20px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 700;
+        }
+        .trade-card-select.in-trade {
+            opacity: 0.4 !important; filter: grayscale(1) !important;
+            border-color: #444 !important;
+            cursor: not-allowed !important; pointer-events: none !important;
+        }
+        .trade-card-select.in-trade::after {
+            content: '🔒'; position: absolute;
+            top: -6px; right: -6px; font-size: 14px;
+            background: rgba(0,0,0,0.7);
+            border-radius: 50%; padding: 2px 4px;
+        }
+        .trade-offer-item {
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px; padding: 12px 16px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+        .trade-offer-item .offer-header {
+            display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap;
+            gap: 6px; margin-bottom: 6px;
+        }
+        .trade-offer-item .offer-player { font-weight: 600; font-size: 14px; }
+        .trade-offer-item .offer-card {
+            display: inline-flex; flex-direction: column; align-items: center;
+            padding: 4px 8px; border-radius: 8px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05); min-width: 44px;
+        }
+        .trade-offer-item .offer-card .card-rank { font-size: 14px; font-weight: 700; }
+        .trade-offer-item .offer-card .card-img {
+            width: 32px; height: 32px; object-fit: cover;
+            border-radius: 4px; margin-bottom: 2px;
+        }
+        .trade-offer-item .offer-card .card-name {
+            font-size: 8px; opacity: 0.7; text-align: center;
+            max-width: 40px; overflow: hidden;
+            text-overflow: ellipsis; white-space: nowrap;
+        }
+        .trade-offer-item .offer-cards {
+            display: flex; gap: 6px; flex-wrap: wrap;
+            align-items: center; margin: 4px 0;
+        }
+        .trade-offer-item .offer-cards-label { font-size: 11px; opacity: 0.4; margin-right: 4px; }
+        .trade-offer-item .offer-actions {
+            display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px;
+        }
+        .trade-offer-item .offer-status {
+            font-size: 12px; font-weight: 600;
+            padding: 2px 12px; border-radius: 20px;
+        }
+        .trade-offer-item .offer-status.pending { background: rgba(255,204,102,0.15); color: #ffcc66; }
+        .trade-offer-item .offer-status.accepted { background: rgba(68,255,68,0.15); color: #44ff44; }
+        .trade-offer-item .offer-status.rejected { background: rgba(255,68,68,0.15); color: #ff6b6b; }
+        .trade-offer-item .offer-status.cancelled { background: rgba(255,255,255,0.05); color: #6b7084; }
+        .trade-offer-item .offer-status.expired { background: rgba(255,255,255,0.05); color: #6b7084; }
+        .trade-offer-item .offer-time { font-size: 10px; opacity: 0.3; }
+
+        .trade-btn {
+            padding: 12px 24px; border-radius: 12px;
+            font-weight: 700; font-size: 14px;
+            cursor: pointer; border: none;
+            transition: all 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+            display: inline-flex; align-items: center;
+            justify-content: center; gap: 8px; white-space: nowrap;
+        }
+        .trade-btn:active { transform: scale(0.95); }
+        .trade-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .trade-btn.primary {
+            background: linear-gradient(135deg, #b388ff, #7c4dff);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(123, 77, 255, 0.3);
+        }
+        .trade-btn.primary:hover { transform: translateY(-2px); }
+        .trade-btn.secondary {
+            background: rgba(123, 77, 255, 0.1);
+            color: #b388ff;
+            border: 1px solid rgba(123, 77, 255, 0.2);
+        }
+        .trade-btn.warning {
+            background: linear-gradient(135deg, #f5b342, #e8960a);
+            color: #1a1a2e;
+        }
+        .trade-btn-sm {
+            padding: 6px 16px; border-radius: 30px;
+            font-weight: 700; font-size: 12px;
+            cursor: pointer; border: none;
+            transition: all 0.3s ease;
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        .trade-btn-sm.danger {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: #fff;
+        }
+        .trade-btn-sm.success {
+            background: linear-gradient(135deg, #2ecc71, #27ae60); color: #fff;
+        }
+        .trade-btn-sm.warning {
+            background: rgba(245, 179, 66, 0.15);
+            color: #f5b342;
+            border: 1px solid rgba(245, 179, 66, 0.2);
+        }
+        .trade-btn-sm:hover { transform: translateY(-2px); }
+

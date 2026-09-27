@@ -1,0 +1,319 @@
+/* ПРОФИЛЬ (в стиле MangaBuff) */
+.profile-banner {
+            background: linear-gradient(135deg, #1e1e3a 0%, #2a1e4a 50%, #1e2a4a 100%);
+            border-radius: 20px; padding: 24px 28px; margin-bottom: 20px;
+            position: relative; overflow: hidden;
+            border: 1px solid rgba(179, 136, 255, 0.1);
+        }
+        .profile-banner::before {
+            content: ''; position: absolute; top: -50%; right: -10%;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(179, 136, 255, 0.15), transparent 70%);
+            border-radius: 50%; pointer-events: none;
+        }
+        .profile-banner::after {
+            content: ''; position: absolute; bottom: -50%; left: -5%;
+            width: 250px; height: 250px;
+            background: radial-gradient(circle, rgba(74, 158, 255, 0.1), transparent 70%);
+            border-radius: 50%; pointer-events: none;
+        }
+        .profile-banner-inner {
+            position: relative; z-index: 2;
+            display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+        }
+        .profile-banner .big-avatar {
+            width: 100px; height: 100px; border-radius: 50%;
+            background: linear-gradient(135deg, #7c4dff, #b388ff);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 48px; color: #fff; flex-shrink: 0;
+            border: 3px solid rgba(179, 136, 255, 0.3);
+            box-shadow: 0 0 40px rgba(123, 77, 255, 0.3);
+        }
+        .profile-banner .profile-info-block { flex: 1; min-width: 200px; }
+        .profile-banner .profile-info-block .profile-nick {
+            font-size: 28px; font-weight: 800;
+            margin-bottom: 4px; letter-spacing: -0.5px;
+        }
+        .profile-banner .profile-info-block .profile-id {
+            font-size: 12px; color: #8b90a8; font-family: monospace;
+            cursor: pointer; transition: 0.3s;
+            display: inline-block; margin-bottom: 6px;
+        }
+        .profile-banner .profile-info-block .profile-id:hover { color: #b388ff; }
+        .profile-banner .profile-info-block .profile-rank-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #b388ff, #7c4dff);
+            color: #fff; padding: 4px 14px; border-radius: 20px;
+            font-size: 12px; font-weight: 700; margin-bottom: 6px;
+        }
+        .profile-banner .profile-info-block .profile-join { font-size: 12px; color: #6b7084; }
+        .profile-banner .profile-stats-block { display: flex; gap: 20px; flex-wrap: wrap; }
+        .profile-banner .profile-stats-block .p-stat {
+            text-align: center; background: rgba(0,0,0,0.3);
+            padding: 10px 18px; border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.04); min-width: 80px;
+        }
+        .profile-banner .profile-stats-block .p-stat .num {
+            font-size: 22px; font-weight: 800; color: #b388ff; line-height: 1.2;
+        }
+        .profile-banner .profile-stats-block .p-stat .lbl {
+            font-size: 10px; color: #6b7084;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+
+        /* Полоса опыта */
+        .exp-bar-wrapper { margin-top: 16px; position: relative; z-index: 2; }
+        .exp-bar-wrapper .exp-info {
+            display: flex; justify-content: space-between;
+            font-size: 12px; color: #8b90a8; margin-bottom: 6px;
+        }
+        .exp-bar-wrapper .exp-info strong { color: #ffcc66; }
+        .exp-bar {
+            height: 10px; background: rgba(0,0,0,0.4);
+            border-radius: 10px; overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .exp-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffcc66, #ffaa33, #ff6600);
+            border-radius: 10px; transition: width 0.6s ease;
+            box-shadow: 0 0 20px rgba(255, 170, 51, 0.4);
+        }
+
+        /* Достижения */
+        .achievements-block { margin-top: 16px; position: relative; z-index: 2; }
+        .achievements-block .ach-title {
+            font-size: 13px; font-weight: 700; color: #8b90a8;
+            margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .achievements-grid { display: flex; gap: 10px; flex-wrap: wrap; }
+        .achievement-item {
+            width: 52px; height: 52px; border-radius: 12px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.04);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; transition: 0.3s; cursor: help;
+            position: relative;
+        }
+        .achievement-item:hover {
+            transform: translateY(-3px);
+            border-color: rgba(179, 136, 255, 0.3);
+            box-shadow: 0 8px 20px rgba(123, 77, 255, 0.15);
+        }
+        .achievement-item.locked { opacity: 0.3; filter: grayscale(1); }
+        .achievement-item .ach-tooltip {
+            position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.95); color: #fff;
+            padding: 6px 12px; border-radius: 8px; font-size: 11px;
+            white-space: nowrap; opacity: 0; pointer-events: none;
+            transition: 0.2s; border: 1px solid rgba(179, 136, 255, 0.2); z-index: 10;
+        }
+        .achievement-item:hover .ach-tooltip { opacity: 1; }
+
+/* ТОП */
+/* Кнопка копирования ID в модалке профиля */
+        .copy-profile-id-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(179, 136, 255, 0.3);
+            background: rgba(179, 136, 255, 0.1);
+            color: #b388ff;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s;
+            font-family: inherit;
+            margin-top: 6px;
+        }
+        .copy-profile-id-btn:hover {
+            background: rgba(179, 136, 255, 0.2);
+            border-color: rgba(179, 136, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(179, 136, 255, 0.25);
+        }
+        .copy-profile-id-btn:active {
+            transform: scale(0.96);
+        }
+        .copy-profile-id-btn i {
+            font-size: 11px;
+        } 
+        /* Кнопка копирования ID в ТОПе */
+        .top-copy-id-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            border: 1px solid rgba(179, 136, 255, 0.25);
+            background: rgba(179, 136, 255, 0.1);
+            color: #b388ff;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 11px;
+            padding: 0;
+            margin-left: 6px;
+            flex-shrink: 0;
+        }
+        .top-copy-id-btn:hover {
+            background: rgba(179, 136, 255, 0.25);
+            border-color: rgba(179, 136, 255, 0.5);
+            transform: scale(1.1);
+            box-shadow: 0 0 12px rgba(179, 136, 255, 0.3);
+        }
+        .top-copy-id-btn:active {
+            transform: scale(0.9);
+        }
+        .top-copy-id-btn.copied {
+            background: rgba(68, 255, 68, 0.2);
+            border-color: rgba(68, 255, 68, 0.5);
+            color: #44ff44;
+        }
+
+        @media (max-width: 600px) {
+            .top-copy-id-btn {
+                width: 22px;
+                height: 22px;
+                font-size: 10px;
+                margin-left: 4px;
+            }
+        }
+
+        .top-wrapper { max-width: 600px; margin: 0 auto; }
+        .top-list { list-style: none; margin-top: 10px; }
+        .top-list li {
+            display: flex; justify-content: space-between;
+            align-items: center; background: rgba(0, 0, 0, 0.2);
+            margin: 6px 0; padding: 12px 18px;
+            border-radius: 14px; font-size: 13px;
+            border: 1px solid rgba(255,255,255,0.02);
+            transition: 0.3s; cursor: pointer;
+        }
+        .top-list li:hover {
+            transform: translateX(4px);
+            background: rgba(123, 77, 255, 0.08);
+            border-color: rgba(123, 77, 255, 0.1);
+        }
+        .top-list .current-player {
+            background: rgba(123, 77, 255, 0.12);
+            border: 1px solid rgba(123, 77, 255, 0.15);
+        }
+        .top-list .top-player-name { display: flex; align-items: center; gap: 8px; }
+        .top-list .top-player-name .medal { font-size: 16px; }
+        .top-list .top-player-name .name { font-weight: 600; }
+        .top-list .top-player-stats {
+            display: flex; gap: 12px;
+            font-size: 12px; color: #6b7084;
+        }
+        .top-list .top-player-stats span { color: #b388ff; font-weight: 700; }
+        .player-rank-block {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 14px; padding: 14px 18px;
+            margin-top: 12px; text-align: center;
+            border: 1px solid rgba(255,255,255,0.02);
+        }
+        .player-rank-block strong { color: #b388ff; }
+
+/* ПРОФИЛЬ ИГРОКА (модалка) */
+.player-profile-modal .modal-content { max-width: 440px; }
+        .player-profile-modal .cards-preview {
+            display: flex; flex-wrap: wrap;
+            gap: 6px; justify-content: center; margin: 10px 0;
+        }
+        .player-profile-modal .cards-preview .card-chip {
+            padding: 4px 12px; border-radius: 20px;
+            font-size: 12px; font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .player-profile-modal .mb-link-btn {
+            background: rgba(123, 77, 255, 0.15);
+            border: 1px solid rgba(123, 77, 255, 0.2);
+            color: #b388ff; padding: 8px 20px;
+            border-radius: 30px; font-weight: 600; font-size: 13px;
+            cursor: pointer; text-decoration: none; display: inline-block;
+        }
+
+/* НАСТРОЙКИ */
+.settings-section {
+            background: rgba(20, 24, 36, 0.6);
+            border-radius: 20px; padding: 20px 18px;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .settings-section .setting-group {
+            background: rgba(0,0,0,0.2);
+            border-radius: 14px; padding: 16px; margin-bottom: 12px;
+        }
+        .settings-section .setting-group .group-title {
+            font-weight: 700; font-size: 14px;
+            color: #b388ff; margin-bottom: 10px;
+        }
+        .settings-section .setting-row {
+            display: flex; justify-content: space-between;
+            align-items: center; padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        .settings-section .setting-row:last-child { border-bottom: none; }
+        .settings-section .setting-row .label { font-size: 13px; color: #e4e6f0; }
+        .settings-section .setting-row .btn-sm {
+            padding: 6px 16px; border-radius: 30px;
+            font-weight: 600; font-size: 12px;
+            cursor: pointer; border: none;
+            background: rgba(123, 77, 255, 0.15); color: #b388ff;
+        }
+        .settings-section .setting-row .btn-sm.danger { background: rgba(255, 68, 68, 0.15); color: #ff6b6b; }
+        .settings-section .setting-row .btn-sm.success { background: rgba(68, 255, 68, 0.15); color: #44ff44; }
+
+        .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .switch .slider {
+            position: absolute; cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.1);
+            transition: 0.3s; border-radius: 24px;
+        }
+        .switch .slider:before {
+            position: absolute; content: "";
+            height: 18px; width: 18px;
+            left: 3px; bottom: 3px;
+            background: white; transition: 0.3s; border-radius: 50%;
+        }
+        .switch input:checked + .slider { background: linear-gradient(135deg, #b388ff, #7c4dff); }
+        .switch input:checked + .slider:before { transform: translateX(20px); }
+
+/* КАЛЕНДАРЬ */
+.calendar-block {
+            margin-top: 20px;
+            background: rgba(20, 24, 36, 0.6);
+            border-radius: 16px; padding: 16px;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .calendar-header {
+            display: flex; justify-content: space-between;
+            align-items: center; margin-bottom: 12px;
+        }
+        .calendar-header .cal-title { font-weight: 700; font-size: 15px; }
+        .calendar-header .cal-streak { font-size: 13px; color: #ffcc66; }
+        .calendar-grid {
+            display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;
+        }
+        .calendar-bonus {
+            text-align: center; margin-top: 10px;
+            font-size: 12px; opacity: 0.5;
+        }
+
+/* ИВЕНТ */
+.event-info-panel {
+            background: linear-gradient(135deg, rgba(42,58,42,0.2), rgba(26,42,26,0.2));
+            border-radius: 16px; padding: 18px 20px;
+            border: 1px solid rgba(255, 204, 102, 0.08);
+            margin-bottom: 16px;
+            display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+        }
+        .event-info-panel .event-icon { font-size: 48px; }
+        .event-info-panel .event-name { font-weight: 700; font-size: 18px; }
+        .event-info-panel .event-desc { font-size: 13px; color: #7a7f98; }
+        .event-info-panel .event-timer { font-size: 12px; opacity: 0.4; margin-top: 4px; }
+

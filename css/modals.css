@@ -1,0 +1,545 @@
+/* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ МОДАЛКИ РЫНКА */
+/* Поиск внутри модалки рынка */
+        #marketModal .search-bar {
+            margin-bottom: 12px;
+        }
+        #marketModal .search-input {
+            width: 100%;
+            padding: 10px 16px;
+            border-radius: 30px;
+            background: rgba(20, 24, 36, 0.6);
+            border: 1px solid rgba(255,255,255,0.06);
+            color: #e4e6f0;
+            font-size: 13px;
+            outline: none;
+            transition: 0.25s;
+            font-family: inherit;
+        }
+        #marketModal .search-input:focus {
+            border-color: rgba(179, 136, 255, 0.3);
+            background: rgba(30, 34, 48, 0.8);
+        }
+        #marketModal .search-input::placeholder {
+            color: #6b7084;
+        }
+
+        /* Form-hint внутри модалки */
+        #marketModal .form-hint {
+            background: rgba(255,204,102,0.08);
+            border-left: 3px solid #ffcc66;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #ffcc66;
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+        #marketModal .form-hint b { color: #ffaa33; font-weight: 800; }
+
+        /* Sub-tabs внутри модалки (фильтр рангов при покупке) */
+        #marketModal .market-sub-tabs {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        #marketModal .market-sub-tab {
+            padding: 6px 12px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(20, 24, 36, 0.6);
+            color: #8b90a8;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s;
+            font-family: inherit;
+        }
+        #marketModal .market-sub-tab:hover {
+            color: #e4e6f0;
+            border-color: rgba(255,255,255,0.12);
+        }
+        #marketModal .market-sub-tab.active {
+            background: rgba(179,136,255,0.15);
+            color: #b388ff;
+            border-color: rgba(179,136,255,0.3);
+        }
+
+        /* Главные табы в модалке (Продать / Купить) */
+        #marketModal .market-tabs-main {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 16px;
+            background: rgba(20, 24, 36, 0.6);
+            padding: 6px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        #marketModal .market-tab-main {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: none;
+            background: transparent;
+            color: #8b90a8;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        #marketModal .market-tab-main:hover {
+            color: #e4e6f0;
+            background: rgba(255,255,255,0.03);
+        }
+        #marketModal .market-tab-main.active {
+            background: linear-gradient(135deg, rgba(179,136,255,0.25), rgba(123,77,255,0.15));
+            color: #b388ff;
+            box-shadow: 0 0 20px rgba(123, 77, 255, 0.2);
+        }
+
+        /* Grid карточек в модалке */
+        #marketModal .market-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            gap: 8px;
+            max-height: 340px;
+            overflow-y: auto;
+            padding: 4px;
+        }
+        #marketModal .market-card-grid::-webkit-scrollbar {
+            width: 4px;
+        }
+        #marketModal .market-card-grid::-webkit-scrollbar-thumb {
+            background: rgba(179, 136, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        /* Rank picker */
+        #marketModal .market-rank-picker {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+
+        /* Qty input */
+        #marketModal .market-qty {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 10px 14px;
+            border: 1px solid rgba(255,255,255,0.04);
+            margin-bottom: 8px;
+        }
+
+        /* Пустое состояние в модалке */
+        #marketModal .market-empty {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6b7084;
+        }
+        #marketModal .market-empty .icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+            opacity: 0.5;
+        }
+        #marketModal .market-empty .title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #8b90a8;
+            margin-bottom: 6px;
+        }
+        #marketModal .market-empty .desc {
+            font-size: 12px;
+        }
+
+        /* Preview карточки в модалке */
+        #marketModal .market-preview {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            padding: 14px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 16px;
+            margin-bottom: 14px;
+        }
+        #marketModal .market-preview-img {
+            width: 80px;
+            height: 105px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            font-weight: 900;
+            border: 3px solid;
+            background: rgba(0,0,0,0.4);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        #marketModal .market-preview-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        #marketModal .market-preview-info {
+            flex: 1;
+            min-width: 0;
+        }
+        #marketModal .market-preview-info .name {
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            color: #e4e6f0;
+        }
+        #marketModal .market-preview-info .rank-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        #marketModal .market-preview-info .set {
+            font-size: 12px;
+            color: #8b90a8;
+            margin-bottom: 6px;
+        }
+
+        /* Кнопки в модалке */
+        #marketModal .modal-actions {
+            display: flex;
+            gap: 10px;
+            padding: 16px 20px;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            background: #141824;
+            position: sticky;
+            bottom: 0;
+            border-radius: 0 0 20px 20px;
+        }
+        #marketModal .modal-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.25s;
+            font-family: inherit;
+        }
+        #marketModal .modal-btn.close {
+            background: rgba(255,255,255,0.05);
+            color: #e4e6f0;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        #marketModal .modal-btn.upgrade {
+            background: linear-gradient(135deg, #b388ff, #7c4dff);
+            color: #fff;
+        }
+        #marketModal .modal-btn.upgrade:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* Check-row */
+        #marketModal .market-check-block {
+            background: rgba(0,0,0,0.2);
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 14px;
+        }
+        #marketModal .market-check-title {
+            font-size: 11px;
+            color: #6b7084;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        #marketModal .market-check-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            font-size: 13px;
+        }
+        #marketModal .market-check-row .label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #8b90a8;
+        }
+        #marketModal .market-check-row .rank-mini {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 12px;
+            border: 1px solid;
+            flex-shrink: 0;
+        }
+        #marketModal .market-check-row .value {
+            font-weight: 700;
+        }
+        #marketModal .market-check-row .value.ok { color: #44ff44; }
+        #marketModal .market-check-row .value.fail { color: #ff6b6b; }
+
+/* МОДАЛЬНЫЕ ОКНА */
+.modal-overlay {
+            display: none; position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(20px); z-index: 300;
+            justify-content: center; align-items: center;
+            padding: 20px; animation: fadeUp 0.3s ease;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal-content {
+            background: #141824; border-radius: 20px;
+            max-width: 420px; width: 100%;
+            padding: 24px 22px;
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            max-height: 90vh; overflow-y: auto;
+        }
+        .modal-content .modal-close {
+            float: right; font-size: 24px;
+            cursor: pointer; color: #6b7084;
+            transition: 0.3s; background: none; border: none;
+        }
+        .modal-content .modal-close:hover { color: #fff; }
+        .modal-content .modal-title {
+            font-size: 20px; font-weight: 700;
+            color: #b388ff; margin-bottom: 16px; text-align: center;
+        }
+        .modal-content .stat-row {
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px; padding: 10px 14px; margin: 6px 0;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .modal-content .stat-row .label { font-size: 13px; color: #6b7084; }
+        .modal-content .stat-row .value { font-size: 17px; font-weight: 700; color: #b388ff; }
+        .modal-content .stat-row .value.highlight { color: #f5b342; }
+        .modal-content .progress-bar {
+            background: rgba(0,0,0,0.3);
+            border-radius: 30px; height: 6px;
+            margin: 10px 0; overflow: hidden;
+        }
+        .modal-content .progress-bar .progress-fill {
+            background: linear-gradient(90deg, #b388ff, #7c4dff);
+            height: 100%; border-radius: 30px;
+            transition: width 0.5s ease;
+        }
+        .modal-content .reward-preview {
+            background: rgba(123, 77, 255, 0.05);
+            border-radius: 12px; padding: 12px; margin: 10px 0;
+            text-align: center;
+            border: 1px solid rgba(123, 77, 255, 0.05); font-size: 13px;
+        }
+        .modal-content .reward-preview span { color: #b388ff; font-weight: 700; }
+        .modal-content .modal-buttons {
+            display: flex; gap: 10px; margin-top: 14px;
+        }
+        .modal-content .modal-buttons .modal-btn {
+            flex: 1; padding: 12px; border-radius: 12px;
+            font-weight: 700; font-size: 14px;
+            cursor: pointer; border: none; transition: 0.3s;
+        }
+        .modal-content .modal-buttons .modal-btn:active { transform: scale(0.96); }
+        .modal-content .modal-buttons .modal-btn.close {
+            background: rgba(255,255,255,0.05);
+            color: #e4e6f0;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .modal-content .modal-buttons .modal-btn.upgrade {
+            background: linear-gradient(135deg, #b388ff, #7c4dff);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(123, 77, 255, 0.2);
+        }
+
+        /* Модалка карты — скроллбар */
+        #cardInfoModal .modal-content::-webkit-scrollbar,
+        #cardOwnersList::-webkit-scrollbar,
+        #cardCommentsList::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        #cardInfoModal .modal-content::-webkit-scrollbar-thumb,
+        #cardOwnersList::-webkit-scrollbar-thumb,
+        #cardCommentsList::-webkit-scrollbar-thumb {
+            background: rgba(179, 136, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        #commentInput:focus {
+            border-color: rgba(179, 136, 255, 0.3);
+            background: rgba(255,255,255,0.08);
+        }
+
+        #commentInput:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+/* PICK MODAL */
+.pick-modal {
+            display: none; position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(20px); z-index: 400;
+            justify-content: center; align-items: center; padding: 20px;
+        }
+        .pick-modal.show { display: flex; }
+        .pick-modal-content {
+            background: #141824; border-radius: 20px;
+            max-width: 520px; width: 100%;
+            padding: 24px 22px;
+            border: 1px solid rgba(255,255,255,0.06); text-align: center;
+        }
+        .pick-modal-content h2 { color: #b388ff; margin-bottom: 4px; }
+        .pick-modal-content .pick-sub {
+            color: #6b7084; font-size: 13px; margin-bottom: 16px;
+        }
+        .pick-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .pick-card {
+            background: linear-gradient(180deg, rgba(20, 24, 36, 0.95), rgba(12, 14, 22, 0.95));
+            border-radius: 12px;
+            padding: 8px 6px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            min-height: 170px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+        .pick-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(179, 136, 255, 0.4);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        .pick-card:active { transform: scale(0.96); }
+        .pick-card .pick-image {
+            width: 100%;
+            height: 100px;
+            border-radius: 8px;
+            margin: 0 0 6px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            background: rgba(0,0,0,0.3);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .pick-card .pick-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .pick-card .pick-rank {
+            font-size: 16px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+        .pick-card .pick-name {
+            font-size: 10px;
+            font-weight: 700;
+            color: #e4e6f0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            margin-bottom: 2px;
+        }
+        .pick-card .pick-rarity {
+            font-size: 8px;
+            color: #6b7084;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+        .pick-card.selected {
+            border-color: #b388ff;
+            box-shadow: 0 0 30px rgba(123, 77, 255, 0.3);
+        }
+        .pick-card.selected .pick-badge { display: block; }
+        .pick-card .pick-badge {
+            display: none;
+            position: absolute;
+            top: -8px; right: -8px;
+            background: #b388ff;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 2px 10px;
+            border-radius: 20px;
+            z-index: 10;
+        }
+
+/* TOAST / FLOATING */
+.toast {
+            position: fixed; bottom: 30px; left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 24, 36, 0.95);
+            backdrop-filter: blur(16px);
+            color: #e4e6f0; padding: 12px 24px;
+            border-radius: 60px; font-size: 14px; font-weight: 600;
+            z-index: 1000; pointer-events: none;
+            animation: toastAnim 2.8s ease forwards;
+            border: 1px solid rgba(179, 136, 255, 0.1);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+            max-width: 90vw; text-align: center;
+        }
+        @keyframes toastAnim {
+            0% { opacity: 0; transform: translateX(-50%) translateY(20px) scale(0.95); }
+            15% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+            85% { opacity: 1; }
+            100% { opacity: 0; transform: translateX(-50%) translateY(-20px) scale(0.95); }
+        }
+        .floating-number {
+            position: fixed; pointer-events: none;
+            z-index: 10000; font-size: 28px; font-weight: 800;
+            background: linear-gradient(135deg, #f5b342, #e8960a);
+            -webkit-background-clip: text;
+            background-clip: text; color: transparent;
+            animation: floatUp 1s ease-out forwards; white-space: nowrap;
+        }
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+            30% { opacity: 1; transform: translate(-50%, -80px) scale(1.2); }
+            100% { opacity: 0; transform: translate(-50%, -160px) scale(1.5); }
+        }
+        .floating-number.critical {
+            background: linear-gradient(135deg, #b388ff, #7c4dff);
+            -webkit-background-clip: text;
+            background-clip: text; color: transparent; font-size: 36px;
+        }
+        .floating-number.xp-float {
+            background: linear-gradient(135deg, #ffcc66, #ffaa33);
+            -webkit-background-clip: text;
+            background-clip: text; color: transparent; font-size: 20px;
+        }
+
